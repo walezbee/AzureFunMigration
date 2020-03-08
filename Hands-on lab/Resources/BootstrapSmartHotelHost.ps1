@@ -16,6 +16,9 @@ Invoke-WebRequest "http://dl.google.com/chrome/install/375.126/chrome_installer.
 Start-Process -FilePath $Path\$Installer -Args "/silent /install" -Verb RunAs -Wait
 Remove-Item $Path\$Installer
 
+# Create command prompt desktop shortcut
+New-Item -ItemType SymbolicLink -Path "C:\Users\All Users\Desktop" -Name "Command Prompt" -Value "$env:windir\System32\cmd.exe"
+
 # Create path
 Write-Output "Create paths"
 $opsDir = "C:\OpsgilityTraining"
@@ -31,13 +34,11 @@ Format-Volume -DriveLetter F -FileSystem NTFS -NewFileSystemLabel DATA
 # Download scripts
 Write-Output "Download scripts"
 $downloads = @( `
-     "https://cloudworkshop.blob.core.windows.net/line-of-business-application-migration/PostRebootConfigure.ps1" `
-    ,"https://cloudworkshop.blob.core.windows.net/line-of-business-application-migration/ConfigureAzureMigrateApplianceNetwork.ps1" `
+     "https://cloudworkshop.blob.core.windows.net/line-of-business-application-migration/mar-2020-updates/PostRebootConfigure.ps1" `
     )
 
 $destinationFiles = @( `
      "$opsDir\PostRebootConfigure.ps1" `
-    ,"$opsDir\ConfigureAzureMigrateApplianceNetwork.ps1" `
     )
 
 Import-Module BitsTransfer
@@ -60,6 +61,10 @@ Set-DhcpServerv4OptionValue -DnsDomain $dnsClient.ConnectionSpecificSuffix -DnsS
 Set-DhcpServerv4OptionValue -OptionID 3 -Value 192.168.1.1 -ScopeID 192.168.1.0
 Set-DhcpServerv4Scope -ScopeId 192.168.1.0 -LeaseDuration 1.00:00:00
 Restart-Service dhcpserver
+
+# Install Windows Subsystem for Linux
+# Used for Bash shell to SSH to the UbuntuWAF
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -NoRestart
 
 # Install Hyper-V and reboot
 Write-Output "Install Hyper-V and restart"

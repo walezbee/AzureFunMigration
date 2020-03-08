@@ -12,7 +12,7 @@
         },
         "adminPassword": {
             "type": "securestring",
-            "defaultValue": "demo@pass123",
+            "defaultValue": "demo!pass123",
             "metadata": {
               "description": "Password for the Virtual Machine."
             }
@@ -33,9 +33,9 @@
         "dmsPrefix": "10.1.0.0/16",
         "dmsSubnetPrefix": "10.1.0.0/24",
         "dmsSubnetName": "DMS",
-        "customScriptFolder": "./",
+        "customScriptFolder": "./mar-2020-updates/",
         "customScriptUriScriptFileName": "BootstrapSmartHotelHost.ps1",
-        "customScriptUri": "https://cloudworkshop.blob.core.windows.net/line-of-business-application-migration/BootstrapSmartHotelHost.ps1"
+        "customScriptUri": "https://cloudworkshop.blob.core.windows.net/line-of-business-application-migration/mar-2020-updates/BootstrapSmartHotelHost.ps1"
     },
     "resources": [
         {
@@ -52,7 +52,7 @@
                     "imageReference": {
                         "publisher": "MicrosoftWindowsServer",
                         "offer": "WindowsServer",
-                        "sku": "2016-Datacenter",
+                        "sku": "2019-Datacenter",
                         "version": "latest"
                     },
                     "osDisk": {
@@ -257,9 +257,11 @@
                 "publicIPAddressVersion": "IPv4",
                 "publicIPAllocationMethod": "Dynamic",
                 "idleTimeoutInMinutes": 4,
+                "dnsSettings": {
+                    "domainNameLabel": "[toLower(concat(variables('smarthotelhostVMname'), '-', substring(uniqueString(resourceGroup().id),0,4)))]"
+                },
                 "ipTags": []
-            },
-            "dependsOn": []
+            }
         },
         {
             "apiVersion": "2016-03-30",

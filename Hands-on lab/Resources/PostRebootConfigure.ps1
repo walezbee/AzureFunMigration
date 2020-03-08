@@ -182,7 +182,7 @@ Unregister-ScheduledTask -TaskName "SetUpVMs" -Confirm:$false
 
 # Download AzCopy. We won't use the aka.ms/downloadazcopy link in case of breaking changes in later versions
 Write-Output "Download and install AzCopy"
-$azcopyUrl = "https://cloudworkshop.blob.core.windows.net/line-of-business-application-migration/azcopy_windows_amd64_10.1.1.zip"
+$azcopyUrl = "https://cloudworkshop.blob.core.windows.net/line-of-business-application-migration/mar-2020-updates/azcopy_windows_amd64_10.1.1.zip"
 $azcopyZip = "$opsDir\azcopy.zip"
 Start-BitsTransfer -Source $azcopyUrl -Destination $azcopyZip
 $azcopyZipfile = Get-ChildItem -Path $azcopyZip
@@ -192,13 +192,13 @@ $azcopy = "$opsDir\azcopy_windows_amd64_10.1.1\azcopy.exe"
 # Download SmartHotel VMs from blob storage
 # Also download Azure Migrate appliance (saves time in lab later)
 Write-Output "Download nested VM zip files using AzCopy"
-$container = 'https://cloudworkshop.blob.core.windows.net/line-of-business-application-migration'
+$container = 'https://cloudworkshop.blob.core.windows.net/line-of-business-application-migration/mar-2020-updates'
 
 cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/SmartHotelWeb1.zip $tempDir\SmartHotelWeb1.zip"
 cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/SmartHotelWeb2.zip $tempDir\SmartHotelWeb2.zip"
 cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/SmartHotelSQL1.zip $tempDir\SmartHotelSQL1.zip"
 cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/UbuntuWAF.zip $tempDir\UbuntuWAF.zip"
-cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/AzureMigrateAppliance_v2.19.07.30.zip $tempDir\AzureMigrate.zip"
+cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/AzureMigrateAppliance_v2.19.11.12.zip $tempDir\AzureMigrate.zip"
 
 # Unzip the VMs
 Write-Output "Unzip nested VMs"
@@ -253,9 +253,9 @@ Wait-For-Website('http://192.168.0.8')
 
 # Rearm (extend evaluation license) and reboot each Windows VM
 Write-Output "Re-arming Windows VMs (extend eval licenses)"
-Rearm-VM -ComputerName "smarthotelweb1" -Username "Administrator" -Password "demo@pass123"
-Rearm-VM -ComputerName "smarthotelweb2" -Username "Administrator" -Password "demo@pass123"
-Rearm-VM -ComputerName "smarthotelSQL1" -Username "Administrator" -Password "demo@pass123"
+Rearm-VM -ComputerName "smarthotelweb1" -Username "Administrator" -Password "demo!pass123"
+Rearm-VM -ComputerName "smarthotelweb2" -Username "Administrator" -Password "demo!pass123"
+Rearm-VM -ComputerName "smarthotelSQL1" -Username "Administrator" -Password "demo!pass123"
 
 # Warm up the app after the re-arm reboots
 Write-Output "Waiting for SmartHotel reboot"
@@ -264,14 +264,19 @@ Wait-For-Website('http://192.168.0.8')
 # Add NAT forwarders
 # We do this and the firewall rules last so the user check that the web site is working when accessed via the host IP only works once all the other set-up is completed
 Write-Output "Create NAT rules"
-Add-NetNatStaticMapping -ExternalIPAddress "0.0.0.0" -ExternalPort 22   -Protocol TCP -InternalIPAddress "192.168.0.8" -InternalPort 22   -NatName $natName
 Add-NetNatStaticMapping -ExternalIPAddress "0.0.0.0" -ExternalPort 80   -Protocol TCP -InternalIPAddress "192.168.0.8" -InternalPort 80   -NatName $natName
 Add-NetNatStaticMapping -ExternalIPAddress "0.0.0.0" -ExternalPort 1433 -Protocol TCP -InternalIPAddress "192.168.0.6" -InternalPort 1433 -NatName $natName
 
 # Add a firewall rule for HTTP and SQL
 Write-Output "Create firewall rules"
-New-NetFirewallRule -DisplayName "SSH Inbound" -Direction Inbound -LocalPort 22 -Protocol TCP -Action Allow
 New-NetFirewallRule -DisplayName "HTTP Inbound" -Direction Inbound -LocalPort 80 -Protocol TCP -Action Allow
 New-NetFirewallRule -DisplayName "Microsoft SQL Server Inbound" -Direction Inbound -LocalPort 1433 -Protocol TCP -Action Allow
+
+# Set up separate subnet for Azure Migrate Appliance
+Write-Output "Create AzureMigrateSwitch"
+New-VMSwitch -Name AzureMigrateSwitch -SwitchType Internal
+$adapter = Get-NetAdapter | ? { $_.Name -like "*Migrat*" }
+Write-Output "Create gateway"
+New-NetIPAddress -IPAddress 192.168.1.1 -PrefixLength 24 -InterfaceIndex $adapter.ifIndex
 
 Stop-Transcript
