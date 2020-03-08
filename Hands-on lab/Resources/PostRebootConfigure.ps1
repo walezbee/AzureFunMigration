@@ -166,7 +166,9 @@ Function Rearm-VM {
 }
 
 Start-Transcript "C:\PostRebootConfigure_log.txt"
-$ErrorActionPreference = 'SilentlyContinue'
+
+Start-Sleep 60
+$ErrorActionPreference = 'continue'
 Import-Module BitsTransfer
 
 # Create paths
