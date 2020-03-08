@@ -31,14 +31,25 @@ Initialize-Disk -Number $disk.DiskNumber -PartitionStyle GPT
 New-Partition -DiskNumber $disk.DiskNumber -UseMaximumSize -DriveLetter F
 Format-Volume -DriveLetter F -FileSystem NTFS -NewFileSystemLabel DATA
 
-# Download scripts
-Write-Output "Download scripts"
+# path for 7z
+$7zDir = "$opsDir\7z"
+New-Item -Path $7zDir -ItemType directory -Force
+
+# Download post-migration script and 7z
+Write-Output "Download with Bits"
+$sourceFolder = 'https://cloudworkshop.blob.core.windows.net/line-of-business-application-migration/mar-2020-updates'
 $downloads = @( `
-     "https://cloudworkshop.blob.core.windows.net/line-of-business-application-migration/mar-2020-updates/PostRebootConfigure.ps1" `
+     "$sourceFolder/PostRebootConfigure.ps1" `
+    ,"$sourceFolder/7z/7za.exe" `
+    ,"$sourceFolder/7z/7za.dll" `
+    ,"$sourceFolder/7z/7zxa.dll" `
     )
 
 $destinationFiles = @( `
      "$opsDir\PostRebootConfigure.ps1" `
+    ,"$7zDir\7za.exe" `
+    ,"$7zDir\7za.dll" `
+    ,"$7zDir\7zxa.dll" `
     )
 
 Import-Module BitsTransfer

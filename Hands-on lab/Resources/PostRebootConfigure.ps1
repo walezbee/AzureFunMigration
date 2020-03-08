@@ -82,7 +82,7 @@ Function Set-VMNetworkConfiguration {
     }
 }
 
-Function Unzip-Files {
+Function Expand-Files {
     Param (
         [Object]$Files,
         [string]$Destination
@@ -94,7 +94,9 @@ Function Unzip-Files {
 
         write-output "Start unzip: $fileName to $Destination"
         
-        (new-object -com shell.application).namespace($Destination).CopyHere((new-object -com shell.application).namespace($fileName).Items(),16)
+        $7zEXE = "$opsDir\7z\7za.exe"
+
+        cmd /c "$7zEXE x -y -o$Destination $fileName" | Add-Content $cmdLogPath
         
         write-output "Finish unzip: $fileName to $Destination"
     }
@@ -165,7 +167,8 @@ Function Rearm-VM {
     Write-Output "Re-arm complete"
 }
 
-Start-Transcript "C:\PostRebootConfigure_log.txt"
+Start-Transcript -Path "C:\PostRebootConfigure_log.txt"
+$cmdLogPath = "C:\PostRebootConfigure_log_cmd.txt"
 
 Start-Sleep 60
 $ErrorActionPreference = 'continue'
@@ -188,24 +191,24 @@ $azcopyUrl = "https://cloudworkshop.blob.core.windows.net/line-of-business-appli
 $azcopyZip = "$opsDir\azcopy.zip"
 Start-BitsTransfer -Source $azcopyUrl -Destination $azcopyZip
 $azcopyZipfile = Get-ChildItem -Path $azcopyZip
-Unzip-Files -Files $azcopyZipfile -Destination $opsDir
+Expand-Files -Files $azcopyZipfile -Destination $opsDir
 $azcopy = "$opsDir\azcopy_windows_amd64_10.1.1\azcopy.exe"
 
 # Download SmartHotel VMs from blob storage
 # Also download Azure Migrate appliance (saves time in lab later)
 Write-Output "Download nested VM zip files using AzCopy"
-$container = 'https://cloudworkshop.blob.core.windows.net/line-of-business-application-migration/mar-2020-updates'
+$sourceFolder = 'https://cloudworkshop.blob.core.windows.net/line-of-business-application-migration/mar-2020-updates'
 
-cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/SmartHotelWeb1.zip $tempDir\SmartHotelWeb1.zip"
-cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/SmartHotelWeb2.zip $tempDir\SmartHotelWeb2.zip"
-cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/SmartHotelSQL1.zip $tempDir\SmartHotelSQL1.zip"
-cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/UbuntuWAF.zip $tempDir\UbuntuWAF.zip"
-cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/AzureMigrateAppliance_v2.19.11.12.zip $tempDir\AzureMigrate.zip"
+cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $sourceFolder/SmartHotelWeb1.zip $tempDir\SmartHotelWeb1.zip" | Add-Content $cmdLogPath
+cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $sourceFolder/SmartHotelWeb2.zip $tempDir\SmartHotelWeb2.zip" | Add-Content $cmdLogPath
+cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $sourceFolder/SmartHotelSQL1.zip $tempDir\SmartHotelSQL1.zip" | Add-Content $cmdLogPath
+cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $sourceFolder/UbuntuWAF.zip $tempDir\UbuntuWAF.zip" | Add-Content $cmdLogPath
+cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $sourceFolder/AzureMigrateAppliance_v2.19.11.12.zip $tempDir\AzureMigrate.zip" | Add-Content $cmdLogPath
 
 # Unzip the VMs
 Write-Output "Unzip nested VMs"
 $zipfiles = Get-ChildItem -Path "$tempDir\*.zip"
-Unzip-Files -Files $zipfiles -Destination $vmDir
+Expand-Files -Files $zipfiles -Destination $vmDir
 
 # Create the NAT network
 Write-Output "Create internal NAT"
