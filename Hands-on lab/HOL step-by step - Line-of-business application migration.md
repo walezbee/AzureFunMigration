@@ -874,35 +874,37 @@ The schema migration will be carried out using an offline data migration activit
 
     ![Screenshot showing the 'New Activity' button within an Azure Database Migration Service project, with 'Offline data migration' selected from the drop-down.](images/Exercise2/new-activity-data.png)
 
-2. The Migration Wizard is shown. Most settings are already populated from the existing migration project. At the 'Select source' step, re-enter the source database password **demo!pass123**, then select **Save**.
+2. The Migration Wizard is shown. Most settings are already populated from the existing migration project. At the **Select source** step, re-enter the source database password **demo!pass123**, then select **Save**.
 
     ![Screenshot showing the 'Select source' step of the DMS Migration Wizard. The source database password is highlighted.](images/Exercise2/select-source-pwd-only-data.png)
 
-3. At the 'Select target' step, enter the password **demo!pass123** and select **Save**.
+3. At the **Select target** step, enter the password **demo!pass123** and select **Save**.
 
     ![Screenshot showing the 'Select target' step of the DMS Migration Wizard. The target database password is highlighted.](images/Exercise2/select-target-pwd-only-data.png)
 
-4. At the 'Map to target databases' step, check the **SmartHotel.Registration** database is selected. Under 'Target Database' select **smarthoteldb**. Select **Save**.
+4. At the **Map to target databases** step, check the **SmartHotel.Registration** database. Under **Target Database** select **smarthoteldb**. Select **Save**.
 
     ![Screenshot showing the 'Select database and schema' step of the DMS Migration Wizard.](images/Exercise2/map-target-db.png)
 
-5. The 'Configure migration settings' step allows you to specify which tables should have their data migrated. Select the **Bookings** table and select **Save**.
+5. The **Configure migration settings** step allows you to specify which tables should have their data migrated. Select the **Bookings** table and select **Save**.
 
     ![Screenshot from DMS showing tables being selected for replication.](images/Exercise2/select-tables.png)
 
-6. At the **Migration summary** step, enter **DataMigration** as the 'Activity name' and choose any value for the 'Validation option'. Select **Run migration**.
+6. At the **Migration summary** step, enter **DataMigration** as the **Activity name** and choose any value for the **Validation option**. Select **Run migration**.
 
     ![Screenshot from DMS showing a summary of the migration settings.](images/Exercise2/run-data-migration.png)
 
 7. The data migration will begin. Select the **Refresh** button and watch the migration progress, until it shows as **Completed**.
 
+    **Note:** You may receive a warning message about validation issues but the migration will still show as '1 of 1 table(s) completed'.
+
     ![Screenshot from DMS showing the data migration in completed.](images/Exercise2/data-migration-completed.png)
 
 As a final step, we will remove the private endpoint that allows the DMS service access to the database, since this access is no longer required.
 
-8.  In the Azure portal, navigate to the **SmartHotelHostDBRG** resource group, and then to the database server. Under 'Security', select **Private endpoint connections**.
+8.  In the Azure portal, navigate to the **SmartHotelHostDBRG** resource group, and then to the database server. Under **Security**, select **Private endpoint connections**.
 
-9.  Right-select the **SmartHotel-DB-for-DMS** endpoint added earlier, and select **Delete**.
+9.  Select the **SmartHotel-DB-for-DMS** endpoint added earlier, and select **Remove**.
 
     ![Screenshot from the SQL server showing the SmartHotel-DB-for-DMS private endpoint being removed.](images/Exercise2/private-endpoint-remove.png)
 
