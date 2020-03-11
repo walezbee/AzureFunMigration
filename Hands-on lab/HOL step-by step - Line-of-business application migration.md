@@ -35,29 +35,52 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
   - [Before the hands-on lab](#before-the-hands-on-lab)
   - [Exercise 1: Discover and assess the on-premises environment](#exercise-1-discover-and-assess-the-on-premises-environment)
     - [Task 1: Create the Azure Migrate project and add assessment and migration tools](#task-1-create-the-azure-migrate-project-and-add-assessment-and-migration-tools)
+      - [Task summary](#task-summary)
     - [Task 2: Deploy the Azure Migrate appliance](#task-2-deploy-the-azure-migrate-appliance)
+      - [Task summary](#task-summary-1)
     - [Task 3: Configure the Azure Migrate appliance](#task-3-configure-the-azure-migrate-appliance)
+      - [Task summary](#task-summary-2)
     - [Task 4: Create a migration assessment](#task-4-create-a-migration-assessment)
+      - [Task summary](#task-summary-3)
     - [Task 5: Configure dependency visualization](#task-5-configure-dependency-visualization)
+      - [Task summary](#task-summary-4)
     - [Task 6: Explore dependency visualization](#task-6-explore-dependency-visualization)
+      - [Task summary](#task-summary-5)
+    - [Exercise summary](#exercise-summary)
   - [Exercise 2: Migrate the Application Database](#exercise-2-migrate-the-application-database)
     - [Task 1: Register the Microsoft.DataMigration resource provider](#task-1-register-the-microsoftdatamigration-resource-provider)
+      - [Task summary](#task-summary-6)
     - [Task 2: Create an Azure SQL Database](#task-2-create-an-azure-sql-database)
+      - [Task summary](#task-summary-7)
     - [Task 3: Create the Database Migration Service](#task-3-create-the-database-migration-service)
+      - [Task summary](#task-summary-8)
     - [Task 4: Assess the on-premises database using Data Migration Assistant](#task-4-assess-the-on-premises-database-using-data-migration-assistant)
+      - [Task summary](#task-summary-9)
     - [Task 5: Create a DMS migration project](#task-5-create-a-dms-migration-project)
+      - [Task summary](#task-summary-10)
     - [Task 6: Migrate the database schema](#task-6-migrate-the-database-schema)
+      - [Task summary](#task-summary-11)
     - [Task 7: Migrate the on-premises data](#task-7-migrate-the-on-premises-data)
+      - [Task summary](#task-summary-12)
+    - [Exercise summary](#exercise-summary-1)
   - [Exercise 3: Migrate the application and web tiers using Azure Migrate: Server Migration](#exercise-3-migrate-the-application-and-web-tiers-using-azure-migrate-server-migration)
     - [Task 1: Create a Storage Account](#task-1-create-a-storage-account)
+      - [Task summary](#task-summary-13)
     - [Task 2: Create a Virtual Network](#task-2-create-a-virtual-network)
+      - [Task summary](#task-summary-14)
     - [Task 3: Register the Hyper-V Host with Azure Migrate Server Migration](#task-3-register-the-hyper-v-host-with-azure-migrate-server-migration)
+      - [Task summary](#task-summary-15)
     - [Task 4: Enable Replication from Hyper-V to Azure Migrate](#task-4-enable-replication-from-hyper-v-to-azure-migrate)
+      - [Task summary](#task-summary-16)
     - [Task 5: Configure static internal IP addresses for each VM](#task-5-configure-static-internal-ip-addresses-for-each-vm)
+      - [Task summary](#task-summary-17)
     - [Task 6: Server migration](#task-6-server-migration)
+      - [Task summary](#task-summary-18)
     - [Task 7: Enable Azure Bastion](#task-7-enable-azure-bastion)
     - [Task 8: Configure the database connection](#task-8-configure-the-database-connection)
+      - [Task summary](#task-summary-19)
     - [Task 9: Configure the public IP address and test the SmartHotel application](#task-9-configure-the-public-ip-address-and-test-the-smarthotel-application)
+      - [Task summary](#task-summary-20)
     - [Task 10: Post-migration steps](#task-10-post-migration-steps)
   - [After the hands-on lab](#after-the-hands-on-lab)
     - [Task 1: Clean up resources](#task-1-clean-up-resources)
@@ -84,8 +107,11 @@ During the lab, you will migrate this entire application stack to Azure. This wi
 The SmartHotel application comprises 4 VMs hosted in Hyper-V:
 
 - **Database tier** Hosted on the smarthotelSQL1 VM, which is running Windows Server 2016 and SQL Server 2017
+
 - **Application tier** Hosted on the smarthotelweb2 VM, which is running Windows Server 2012R2.
+
 - **Web tier** Hosted on the smarthotelweb1 VM, which is running Windows Server 2012R2.
+
 - **Web proxy** Hosted on the  UbuntuWAF VM, which is running Nginx on Ubuntu 18.04 LTS.
 
 For simplicity, there is no redundancy in any of the tiers.
@@ -156,7 +182,7 @@ In this task, you will create the Azure Migrate project and select the migration
 
     ![Screenshot of the Azure Migrate 'Servers' blade, showing the Azure Migrate: Server Assessment tool for the selected subscription and resource group.](images/Exercise1/servers.png)
 
-#### Task summary <!-- omit in toc -->
+#### Task summary 
 
 In this task you created an Azure Migrate project, selecting the built-in tools for assessment and migration.
 
@@ -194,7 +220,7 @@ In this task, you will deploy and configure the Azure Migrate appliance in the o
 
 8. At the **Select Virtual Machine** step, the **AzureMigrateAppliance** VM should already be selected. Select **Next**.
 
-9.  At the **Choose Import Type** step, keep the default setting **Register the virtual machine in-place**. Select **Next**.
+9. At the **Choose Import Type** step, keep the default setting **Register the virtual machine in-place**. Select **Next**.
 
 10. At the **Connect Network** step, you will see an error that the virtual switch previously used by the Azure Migrate appliance could not be found. From the 'Connection' drop down, select the **Azure Migrate Switch** you created earlier, then select **Next**.
 
@@ -212,7 +238,7 @@ In this task, you will deploy and configure the Azure Migrate appliance in the o
 
    ![Screenshot of Hyper-V Manager showing the start button for the Azure Migrate appliance.](images/Exercise1/start-migrate-appliance.png)
 
-#### Task summary <!-- omit in toc -->
+#### Task summary 
 
 In this task you deployed the Azure Migrate appliance in the on-premises Hyper-V environment.
 
@@ -296,7 +322,7 @@ In this task, you will configure the Azure Migrate appliance and use it to compl
 
 >**Wait for the discovery process to complete before proceeding to the next Task**.
 
-#### Task summary <!-- omit in toc -->
+#### Task summary 
 
 In this task you configured the Azure Migrate appliance in the on-premises Hyper-V environment and started the migration assessment discovery process.
 
@@ -352,7 +378,7 @@ In this task, you will use Azure Migrate to create a migration assessment for th
 
 13. Take a few minutes to explore other aspects of the migration assessment. Check why the UbuntuWAF is marked as 'conditionally ready for Azure', and explore the costs associated with the migration.
 
-#### Task summary <!-- omit in toc -->
+#### Task summary 
 
 In this task you created and configured an Azure Migrate migration assessment.
 
@@ -460,7 +486,7 @@ In this task, you will configure the Azure Migrate dependency visualization feat
 
 20. The agent installation is now complete. Next, you need to generate some traffic on the SmartHotel application so the dependency visualization has some data to work with. Browse to the public IP address of the SmartHotelHost, and spend a few minutes refreshing the page and checking guests in and out.
 
-#### Task summary <!-- omit in toc -->
+#### Task summary 
 
 In this task you configured the Azure Migrate dependency visualization feature, by creating a Log Analytics workspace and deploying the Azure Monitoring Agent and Dependency Agent on both Windows and Linux on-premises machines.
 
@@ -476,16 +502,16 @@ In this task, you will explore the dependency visualization feature of Azure Mig
 
     ![Screenshot showing the view dependencies button in the Azure Migrate VM group blade.](images/Exercise1/view-dependencies.png)
 
-3.  Take a few minutes to explore the dependencies view. Expand each server to show the processes running on that server. Select a process to see process information. See which connections each server makes.
+3. Take a few minutes to explore the dependencies view. Expand each server to show the processes running on that server. Select a process to see process information. See which connections each server makes.
 
     ![Screenshot showing the dependencies view in Azure Migrate.](images/Exercise1/dependencies.png)
 
 
-#### Task summary <!-- omit in toc -->
+#### Task summary 
 
 In this task you explored the Azure Migrate dependency visualization feature.
 
-### Exercise summary <!-- omit in toc -->
+### Exercise summary 
 
 In this exercise, you used Azure Migrate to assess the on-premises environment. This included selecting Azure Migrate tools, deploying the Azure Migrate appliance into the on-premises environment, creating a migration assessment, and using the Azure Migrate dependency visualization.
 
@@ -499,9 +525,9 @@ In this exercise you will migrate the application database from the on-premises 
 
 Prior to using the Azure Database Migration Service, the resource provider **Microsoft.DataMigration** must be registered in the target subscription.
 
-1.  Open the Azure Cloud Shell by navigating to **https://shell.azure.com**. Log in using your Azure subscription credentials if prompted to do so, select a **PowerShell** session, and accept any prompts.
+1. Open the Azure Cloud Shell by navigating to **https://shell.azure.com**. Log in using your Azure subscription credentials if prompted to do so, select a **PowerShell** session, and accept any prompts.
 
-2.  Run the following command to register the **Microsoft.DataMigration** resource provider.
+2. Run the following command to register the **Microsoft.DataMigration** resource provider.
    
     ```PowerShell
     Register-AzResourceProvider -ProviderNamespace Microsoft.DataMigration
@@ -514,7 +540,7 @@ Prior to using the Azure Database Migration Service, the resource provider **Mic
     > Get-AzResourceProvider -ProviderNamespace Microsoft.DataMigration | Select-Object ProviderNamespace, RegistrationState, ResourceTypes
     > ```
 
-#### Task summary <!-- omit in toc -->
+#### Task summary 
 
 In this task you registered the **Microsoft.DataMigration** resource provider with your subscription. This enables this subscription to use the Azure Database Migration Service.
 
@@ -558,13 +584,13 @@ In this task you will create a new Azure SQL database to migrate the on-premises
 
     ![Screenshot from the Azure portal showing the New server blade (when creating a SQL database).](images/Exercise2/new-db-server.png)
 
-4.  Select **Next: Networking >** to move to the **Networking** tab. Confirm that **No access** is selected.
+4. Select **Next: Networking >** to move to the **Networking** tab. Confirm that **No access** is selected.
 
     > **Note:** We will configure private endpoints to access our database later in the lab.
 
 5. Select **Review + Create**, then select **Create** to create the database. Wait for the deployment to complete.
 
-#### Task summary <!-- omit in toc -->
+#### Task summary 
 
 In this task you created an Azure SQL Database running on an Azure SQL Database Server.
 
@@ -576,11 +602,11 @@ In this task you will create an Azure Database Migration Service resource. This 
 >
 > In this lab, the 'on-premises' environment is simulated by a Hyper-V host running in an Azure VM. This VM is deployed to the 'smarthotelvnet' VNet. The DMS will be deployed to a separate VNet called 'DMSVnet'. To simulate the on-premises connection, these two VNet have been peered.
 
-1.  Return to the browser tab you used in task 1 to register the Microsoft.DataMigration resource provider. Check that the registration has been completed before proceeding further.
+1. Return to the browser tab you used in task 1 to register the Microsoft.DataMigration resource provider. Check that the registration has been completed before proceeding further.
 
       ![Screenshot showing the resource provider 'registered' status.](images/Exercise2/registered-rp.png)
 
-2.  In the Azure portal, select **+ Create a resource**, search for **migration**, and then select **Azure Database Migration Service** from the drop-down list.
+2. In the Azure portal, select **+ Create a resource**, search for **migration**, and then select **Azure Database Migration Service** from the drop-down list.
 
 3. On the **Azure Database Migration Service** blade, select **Create**.
 
@@ -588,7 +614,7 @@ In this task you will create an Azure Database Migration Service resource. This 
 
    > **Tip:** If the migration service blade will not load, refresh the portal blade in your browser.
 
-4.  In the **Create Migration Service** blade, on the 'Basics' tab, enter the following values:
+4. In the **Create Migration Service** blade, on the 'Basics' tab, enter the following values:
    
     - Subscription: **Select your Azure subscription**.
   
@@ -602,15 +628,15 @@ In this task you will create an Azure Database Migration Service resource. This 
 
     ![Screenshot showing the Create DMS 'Basics' tab.](images/Exercise2/create-dms.png)
 
-5.  Select **Next: Networking** to move to the **Networking** tab, and select the **DMSvnet/DMS** virtual network and subnet in the **SmartHotelHostRG** resource group.
+5. Select **Next: Networking** to move to the **Networking** tab, and select the **DMSvnet/DMS** virtual network and subnet in the **SmartHotelHostRG** resource group.
    
     ![Screenshot showing the Create DMS 'Networking' tab.](images/Exercise2/create-dms-network.png)
 
-6.  Select **Review + create**, followed by **Create**.
+6. Select **Review + create**, followed by **Create**.
 
 > **Note:** Creating a new migration service can take around 20 minutes. You can continue to the next task without waiting for the operation to complete. You will not use the Database Migration Service until task 5.
 
-#### Task summary <!-- omit in toc -->
+#### Task summary 
 
 In this task you created a new Azure Database Migration Service resource.
 
@@ -689,7 +715,9 @@ In this task you will install and use Microsoft SQL Server Data Migration Assist
 16. **Wait** for the assessment to complete, and review the results. The results should show one unsupported feature, **Service Broker feature is not supported in Azure SQL Database**. For this migration, you can ignore this issue.
 
     > **Note:** For Azure SQL Database, the assessments identify feature parity issues and migration blocking issues.
+
     >- The SQL Server feature parity category provides a comprehensive set of recommendations, alternative approaches available in Azure, and mitigating steps to help you plan the effort into your migration projects.
+
     >- The Compatibility issues category identifies partially supported or unsupported features that reflect compatibility issues that might block migrating on-premises SQL Server database(s) to Azure SQL Database. Recommendations are also provided to help you address those issues.
 
 17. Select **Upload to Azure Migrate**  to upload the database assessment to your Azure Migrate project (this button may take a few seconds to become enabled).
@@ -706,7 +734,7 @@ In this task you will install and use Microsoft SQL Server Data Migration Assist
 
     ![Screenshot of the 'Azure Migrate - Databases' blade in the Azure portal, showing 1 assessed database.](images/Exercise2/db-assessed.png)
 
-#### Task summary <!-- omit in toc -->
+#### Task summary 
 
 In this task you used Data Migration Assistant to assess an on-premises database for readiness to migrate to Azure SQL, and uploaded the assessment results to your Azure Migrate project. The DMA is integrated with Azure Migrate providing a single hub for assessment and migration tools.
 
@@ -718,13 +746,13 @@ In subsequent tasks, you will use this project to migrate both the database sche
 
 We'll start by creating the private endpoint that allows the DMS to access the database server.
 
-1.  In the Azure portal, navigate to the **SmartHotelHostDBRG** resource group, and then to the database server.
+1. In the Azure portal, navigate to the **SmartHotelHostDBRG** resource group, and then to the database server.
 
-2.  Under **Security**, select **Firewalls and virtual networks**. Note that there is no access granted to the database public IP address.
+2. Under **Security**, select **Firewalls and virtual networks**. Note that there is no access granted to the database public IP address.
 
     ![Screenshot showing the link to add an existing virtual network to the SQL database network security settings.](images/Exercise2/db-network.png)
 
-3.  Select **Private endpoint connections** under **Security**, then **+ Private endpoint**.
+3. Select **Private endpoint connections** under **Security**, then **+ Private endpoint**.
 
 4. On the **Basics** tab enter the following configuration then select **Next: Resource**. 
 
@@ -736,7 +764,7 @@ We'll start by creating the private endpoint that allows the DMS to access the d
   
     ![Screenshot showing the 'Create a private endpoint' blade, 'Basics' tab.](images/Exercise2/private-endpoint-1.png)
 
-5.  On the 'Resource' tab, entering the following configuration then select **Next: Configuration**. 
+5. On the 'Resource' tab, entering the following configuration then select **Next: Configuration**. 
 
     - Connection method: **Connect to an Azure resource in my directory**
   
@@ -750,7 +778,7 @@ We'll start by creating the private endpoint that allows the DMS to access the d
 
     ![Screenshot showing the 'Create a private endpoint' blade, 'Resource' tab.](images/Exercise2/private-endpoint-2.png)
    
-6.  On the **Configuration** tab enter the following configuration then select **Review + create**, then **Create**.
+6. On the **Configuration** tab enter the following configuration then select **Review + create**, then **Create**.
 
     - Virtual network: **DMSvnet**
   
@@ -768,11 +796,11 @@ We'll start by creating the private endpoint that allows the DMS to access the d
 
     >**Note:** Private DNS is used so that the database domain name, **\<your server\>.database.windows.net** resolves to the internal private endpoint IP address **10.1.0.5** when resolved from the DMSvnet, but resolves to the Internet-facing IP address of the database server when resolved from outside the DMSvnet. This means the same connection string (which contains the domain name) can be used in both cases.
 
-8.  Check that the Database Migration Service resource you created in task 3 has completed provisioning. You can check the deployment status from the **Deployments** pane in the **AzureMigrateRG** resource group blade.
+8. Check that the Database Migration Service resource you created in task 3 has completed provisioning. You can check the deployment status from the **Deployments** pane in the **AzureMigrateRG** resource group blade.
 
     ![Screenshot showing the AzureMigrateRG - Deployments blade in the Azure portal. The Microsoft.AzureDMS deployment shows status 'Successful'.](images/Exercise2/dms-deploy.png)
 
-9.  Navigate to the Database Migration Service resource blade in the **AzureMigrateRG** resource group and select **+ New Migration Project**.
+9. Navigate to the Database Migration Service resource blade in the **AzureMigrateRG** resource group and select **+ New Migration Project**.
 
     ![Screenshot showing the Database Migration Service blade in the Azure portal, with the 'New Migration Project' button highlighted.](images/Exercise2/new-dms-project.png)
 
@@ -826,7 +854,7 @@ We'll start by creating the private endpoint that allows the DMS to access the d
 
     ![Screenshot showing the DMS project summary.](images/Exercise2/project-summary.png)
 
-#### Task summary <!-- omit in toc -->
+#### Task summary 
 
 In this task you created a Migration Project within the Azure Database Migration Service. This project contains the connection details for both the source and target databases. A private endpoint was used to avoid exposing the database on a public IP address.
 
@@ -860,7 +888,7 @@ The schema migration will be carried out using a schema migration activity withi
 
     ![Screenshot showing the SchemaMigration progress blade. The status is 'Completed'.](images/Exercise2/schema-completed.png)
 
-#### Task summary <!-- omit in toc -->
+#### Task summary
 
 In this task you used a schema migration activity in the Azure Database Migration Service to migrate the database schema from the on-premises SQL Server database to the Azure SQL database.
 
@@ -908,11 +936,11 @@ As a final step, we will remove the private endpoint that allows the DMS service
 
     ![Screenshot from the SQL server showing the SmartHotel-DB-for-DMS private endpoint being removed.](images/Exercise2/private-endpoint-remove.png)
 
-#### Task summary <!-- omit in toc -->
+#### Task summary 
 
 In this task you used an off-line data migration activity in the Azure Database Migration Service to migrate the database data from the on-premises SQL Server database to the Azure SQL database.
 
-### Exercise summary <!-- omit in toc -->
+### Exercise summary 
 
 In this exercise you migrated the application database from on-premises to Azure SQL Database. The SQL Server Data Migration Assistant was used for migration assessment, and the Azure Database Migration Service was used for schema migration and data migration.
 
@@ -934,18 +962,23 @@ In this task you will create a new Azure Storage Account that will be used by Az
 
 2. In the **Create storage account** blade on the **Basics** tab, use the following values:
 
-    - Subscription: **Select your Azure subscription**.
-    - Resource group (select existing): **AzureMigrateRG**
+    - Subscription: **Select your Azure subscription**
+  
+    - Resource group: **AzureMigrateRG**
+  
     - Storage account name: **migrationstorage\[unique number\]**
+  
     - Location: **IMPORTANT: Select the same location as your Azure SQL Database**.
+  
     - Account kind: **Storage (general purpose v1)** (do not use a v2 account)
+  
     - Replication: **Locally-redundant storage (LRS)**
 
     ![Screenshot of the Azure portal showing the create storage account blade.](images/Exercise3/create-storage-2.png)
 
 3. Select **Review + create**, then select **Create**.
 
-#### Task summary <!-- omit in toc -->
+#### Task summary 
 
 In this task you created a new Azure Storage Account that will be used by Azure Migrate.
 
@@ -961,55 +994,83 @@ You will also configure a private endpoint in this network for the SQL Database.
 
 2. In the **Create virtual network** blade, enter the following values:
 
-    - Subscription: **Select your Azure subscription**.
+    - Subscription: **Select your Azure subscription**
+  
     - Resource group: (create new) **SmartHotelRG**
+  
     - Name: **SmartHotelVNet**
+  
     - Region: **IMPORTANT: Select the same location as your Azure SQL Database**.
 
     ![Screenshot of the Azure portal showing the create virtual network blade 'Basics' tab.](images/Exercise3/create-vnet-2.png)
 
-3. Select **Next: IP Addresses >**, and fill in as follows:
+3. Select **Next: IP Addresses >**, and enter the following configuration:
+
     - IPv4 address space: **192.168.0.0/24** 
-    - First subnet: **SmartHotel**, with address range **192.168.0.0/25**
-    - Second subnet: **SmartHotelDB**, with address range **192.168.0.128/25**
+  
+    - First subnet: Select **Add subnet** and enter the following:
+
+        - Subnet name: **SmartHotel**
+   
+        - Address range: **192.168.0.0/25**
+
+        - Select **Add**
+  
+    - Second subnet: Select **Add subnet** and enter the following:
+
+        - Subnet name: **SmartHotelDB**
+   
+        - Address range: **192.168.0.128/25**
+
+        - Select **Add**
 
     ![Screenshot of the Azure portal showing the create virtual network blade 'IP Addresses' tab.](images/Exercise3/create-vnet-3.png)
 
 4. Select **Review + create**, then **Create**.
 
-5. Navigate to the **SmartHotelHostDBRG** resource group, and then to the database server. Under 'Security', select **Private endpoint connections**, then select **+ Private endpoint**.
+5. Navigate to the **SmartHotelHostDBRG** resource group, and then to the database server. Under **Security**, select **Private endpoint connections**, then select **+ Private endpoint**.
 
-6. On the 'Basics' tab:
+6. On the **Basics** tab, enter the following configuration then select **Next: Resource**:
+
     - Resource group: **SmartHotelDBRG**
+  
     - Name: **SmartHotel-DB-Endpoint**
+  
     - Region: **Select the same location as the SmartHotelVNet**
   
     ![Screenshot showing the 'Create a private endpoint' blade, 'Basics' tab.](images/Exercise3/private-endpoint-1.png)
 
-7.  On the 'Resource' tab:
+7.  On the **Resource** tab, enter the following configuration then select **Next: Configuration**:
+
     - Connection method: **Connect to an Azure resource in my directory**
+  
     - Subscription: **Select your subscription**
+  
     - Resource type: **Microsoft.Sql/servers**
+  
     - Resource: **Your SQL database server name**
+  
     - Target sub-resource: **sqlServer**
 
     ![Screenshot showing the 'Create a private endpoint' blade, 'Resource' tab.](images/Exercise3/private-endpoint-2.png)
    
-8.  On the 'Configuration' tab:
+8.  On the **Configuration** tab, enter the following configuration then select **Review + Create** then **Create**:
+
     - Virtual network: **SmartHotelVNet**
+  
     - Subnet: **SmartHotelDB (192.168.0.128/25)**
+  
     - Integrate with private DNS zone: **Yes**
+  
     - Private DNS zone: (default) **privatelink.database.windows.net**
 
     ![Screenshot showing the 'Create a private endpoint' blade, 'Configuration' tab.](images/Exercise3/private-endpoint-3.png)
 
-9.  Select **Review + create**, then **Create**.
-
-10. **Wait** for the deployment to complete. Open the Private Endpoint blade, and note that the FQDN for the endpoint is listed as **\<your database\>.database.windows.net**, with an internal IP address **192.168.0.132**.
+9.  **Wait** for the deployment to complete. Open the Private Endpoint blade, and note that the FQDN for the endpoint is listed as **\<your database\>.database.windows.net**, with an internal IP address **192.168.0.132**.
 
     >**Note:** Private DNS is used so that the database domain name, **\<your server\>.database.windows.net** resolves to the internal private endpoint IP address **192.168.0.132** when resolved from the SmartHotelVNet, but resolves to the Internet-facing IP address of the database server when resolved from outside the VNet. This means the same connection string (which contains the domain name) can be used in both cases.
 
-#### Task summary <!-- omit in toc -->
+#### Task summary 
 
 In this task you created a new virtual network that will be used by your virtual machines when they are migrated to Azure. You also created a private endpoint in this network, which will be used to access the SQL database.
 
@@ -1021,25 +1082,25 @@ In this task, you will register your Hyper-V host with the Azure Migrate: Server
 
     ![Screenshot of the Azure portal showing the 'Discover' button on the Azure Migrate Server Migration panel.](images/Exercise3/discover-1.png)
 
-2. In the 'Discover machines' panel, under 'Are your machines virtualized', select **Yes, with Hyper-V**. Under 'Target region' enter **the same region as used for your Azure SQL Database** and check the confirmation checkbox. Select **Create resources** to begin the deployment of the Azure Site Recovery resource used by Azure Migrate: Server Migration for Hyper-V migrations.
+2. In the **Discover machines** panel, under **Are your machines virtualized**, select **Yes, with Hyper-V**. Under **Target region** enter **the same region as used for your Azure SQL Database** and check the confirmation checkbox. Select **Create resources** to begin the deployment of the Azure Site Recovery resource used by Azure Migrate: Server Migration for Hyper-V migrations.
 
     ![Screenshot of the Azure portal showing the 'Discover machines' panel from Azure Migrate.](images/Exercise3/discover-2.png)
 
     Once deployment is complete, the 'Discover machines' panel should be updated with additional instructions.
   
-3. Copy the **Download** link for they Hyper-V replication provider software installer to your clipboard.
+3. Copy the **Download** link for the Hyper-V replication provider software installer to your clipboard.
 
     ![Screenshot of the Discover machines' panel from Azure Migrate, highlighting the download link for the Hyper-V replication provider software installer.](images/Exercise3/discover-3.png)
 
 4. Open the **SmartHotelHost** remote desktop window, launch **Chrome** from the desktop shortcut, and paste the link into a new browser tab to download the Azure Site Recovery provider installer.
 
-5. Return to the 'Discover machines' view in your browser (outside the SmartHotelHost remote desktop session). Select the **Download** button and download the registration key file.
+5. Return to the **Discover machines** page in your browser (outside the SmartHotelHost remote desktop session). Select the **Download** button and download the registration key file.
 
     ![Screenshot of the Discover machines' panel from Azure Migrate, highlighting the download link Hyper-V registration key file.](images/Exercise3/discover-4.png)
 
 6. Open the file location in Windows Explorer, and copy the file to your clipboard. Return to the **SmartHotelHost** remote desktop session and paste the file to the desktop.
 
-7. Still within the **SmartHotelHost** remote desktop session, tun the **AzureSiteRecoveryProvider.exe** installer you downloaded a moment ago. On the **Microsoft Update** tab, select **Off** and select **Next**. Accept the default installation location and select **Install**.
+7. Still within the **SmartHotelHost** remote desktop session, open the **AzureSiteRecoveryProvider.exe** installer you downloaded a moment ago. On the **Microsoft Update** tab, select **Off** and select **Next**. Accept the default installation location and select **Install**.
 
     ![Screenshot of the ASR provider installer.](images/Exercise3/asr-provider-install.png)
 
@@ -1053,9 +1114,9 @@ In this task, you will register your Hyper-V host with the Azure Migrate: Server
 
     ![Screenshot of the ASR provider showing successful registration.](images/Exercise3/asr-registered.png)
 
-11. Minimize the SmartHotelHost remote desktop session and return to the Azure Migrate browser window. **Refresh** your browser, then re-open the 'Discover machines' panel by selecting **Discover** under 'Azure Migrate: Server Migration' and selecting **Yes, with Hyper-V** for 'Are your machines virtualized?'.
+11. Minimize the SmartHotelHost remote desktop session and return to the Azure Migrate browser window. **Refresh** your browser, then re-open the **Discover machines** panel by selecting **Discover** under **Azure Migrate: Server Migration** and selecting **Yes, with Hyper-V** for **Are your machines virtualized?**.
 
-12. Select the **Finalize registration** button, which should now be enabled.
+12. Select **Finalize registration**, which should now be enabled.
 
     ![Screenshot of the Discover machines' panel from Azure Migrate, highlighting the download link Hyper-V registration key file.](images/Exercise3/discover-5.png)
 
@@ -1063,15 +1124,15 @@ In this task, you will register your Hyper-V host with the Azure Migrate: Server
 
     ![Screenshot of the 'Discover machines' panel from Azure Migrate, showing the 'Finalizing registration...' message.](images/Exercise3/discover-6.png)
 
-14. Once the registration is complete, close the 'Discover machines' panel.
+14. Once the registration is complete, close the **Discover machines** panel.
 
     ![Screenshot of the 'Discover machines' panel from Azure Migrate, showing the 'Registration finalized' message.](images/Exercise3/discover-7.png)
 
-15. The 'Azure Migrate: Server Migration' panel should now show 5 discovered servers.
+15. The **Azure Migrate: Server Migration** panel should now show 5 discovered servers.
 
     ![Screenshot of the 'Azure Migrate - Servers' blade showing 6 discovered servers under 'Azure Migrate: Server Migration'.](images/Exercise3/discover-8.png)
 
-#### Task summary <!-- omit in toc -->
+#### Task summary 
 
 In this task you registered your Hyper-V host with the Azure Migrate Server Migration service.
 
@@ -1079,35 +1140,29 @@ In this task you registered your Hyper-V host with the Azure Migrate Server Migr
 
 In this task, you will configure and enable the replication of your on-premises virtual machines from Hyper-V to the Azure Migrate Server Migration service.
 
-1. Under 'Azure Migrate: Server Migration', select the **Replicate** button. This opens the 'Replicate' wizard.
+1. Under **Azure Migrate: Server Migration**, select **Replicate**. This opens the **Replicate** wizard.
 
     ![Screenshot highlighting the 'Replicate' button in the 'Azure Migrate: Server Migration' panel of the Azure Migrate - Servers blade.](images/Exercise3/replicate-1.png)
 
-2. In the 'Source settings' tab, under 'Are your machines virtualized?', select **Yes, with Hyper-V** from the drop-down. Then select **Next: Virtual machines**.
+2. In the **Source settings** tab, under **Are your machines virtualized?**, select **Yes, with Hyper-V** from the drop-down. Then select **Next: Virtual machines**.
 
     ![Screenshot of the 'Source settings' tab of the 'Replicate' wizard in Azure Migrate Server Migration. Hyper-V replication is selected.](images/Exercise3/replicate-2.png)
 
-3. In the 'Virtual machines' tab, under 'Import migration settings from an assessment', select **Yes, apply migration settings from an Azure Migrate assessment**. Select the **SmartHotel VMs** VM group and the **SmartHotelAssessment** migration assessment.
+3. In the **Virtual machines** tab, under **Import migration settings from an assessment**, select **Yes, apply migration settings from an Azure Migrate assessment**. Select the **SmartHotel VMs** VM group and the **SmartHotelAssessment** migration assessment.
 
     ![Screenshot of the 'Virtual machines' tab of the 'Replicate' wizard in Azure Migrate Server Migration. The Azure Migrate assessment created earlier is selected.](images/Exercise3/replicate-3.png)
 
-4. The 'Virtual machines' tab should now show the virtual machines included in the assessment. Select the **UbuntuWAF**, **smarthotelweb1**, and **smarthotelweb2** virtual machines, then select **Next: Target settings**.
+4. The **Virtual machines** tab should now show the virtual machines included in the assessment. Select the **UbuntuWAF**, **smarthotelweb1**, and **smarthotelweb2** virtual machines, then select **Next: Target settings**.
 
     ![Screenshot of the 'Virtual machines' tab of the 'Replicate' wizard in Azure Migrate Server Migration. The UbuntuWAF, smarthotelweb1, and smarthotelweb2 machines are selected.](images/Exercise3/replicate-4.png)
 
-5. In the 'Target settings' tab, select your subscription and the existing **SmartHotelRG** resource group. Under 'Replication storage account' select the **storage account you created in task 1** and under 'Virtual Network' and 'Subnet' select the **network you created in Task 2**.
+5. In the **Target settings** tab, select your subscription and the existing **SmartHotelRG** resource group. Under **Replication storage account** select the **migrationstorage** storage account and under **Virtual Network** select **SmartHotelVNet**. Under **Subnet** select **SmartHotel**.
 
     ![Screenshot of the 'Target settings' tab of the 'Replicate' wizard in Azure Migrate Server Migration. The resource group, storage account and virtual network created earlier in this exercise are selected.](images/Exercise3/replicate-5.png)
 
     Select **Next: Compute**.
 
-6. In the 'Compute' tab, select the VM size and OS type as shown in the table.
-
-    | Name           | Azure VM Size   | OS Type |
-    | -------------- | --------------- | ------- |
-    | UbuntuWAF      | Standard_F2s_v2 | Linux   |
-    | smarthotelweb1 | Standard_F2s_v2 | Windows |
-    | smarthotelweb2 | Standard_F2s_v2 | Windows |
+6. In the **Compute** tab, select the **Standard_F2s_v2** VM size for each virtual machine. Select the **Windows** operating system for the **smarthotelweb** virtual machines and the **Linux** operating system for the **UbuntuWAF** virtual machine. 
 
     > **Note:** If you are using an Azure Pass subscription, your subscription may not have a quota allocated for FSv2 virtual machines. In this case, use **DS2_v2 or D2s_v3** virtual machines instead.
 
@@ -1117,19 +1172,19 @@ In this task, you will configure and enable the replication of your on-premises 
 
 7. In the 'Disks' tab, review the settings but do not make any changes. Select **Next: Review + Start replication**, then select **Replicate** to start the server replication.
 
-8. In the 'Azure Migrate - Servers' blade, under 'Azure Migrate: Server Migration', select the **Overview** button.
+8. In the **Azure Migrate - Servers** blade, under **Azure Migrate: Server Migration**, select the **Overview** button.
 
     ![Screenshot of the 'Azure Migrate - Servers' blade with the 'Overview' button in the 'Azure Migrate: Server Migration' panel highlighted.](images/Exercise3/replicate-7.png)
 
-9. Confirm that 3 machines are replicating.
+9. Confirm that the 3 machines are replicating.
 
     ![Screenshot of the 'Azure Migrate: Server Migration' overview blade showing the replication state as 'Healthy' for 3 servers.](images/Exercise3/replicate-8.png)
 
-10. Select **Replicating Machines**.  Select **Refresh** occasionally and wait until all three machines show 'Status' as **Protected**, which shows the initial replication is complete. This may take several minutes.
+10. Select **Replicating Machines** under **Manage** on the left.  Select **Refresh** occasionally and wait until all three machines have a **Protected** status, which shows the initial replication is complete. This may take several minutes.
 
     ![Screenshot of the 'Azure Migrate: Server Migration - Replicating machines' blade showing the replication status as 'Protected' for all 3 servers.](images/Exercise3/replicate-9.png)
 
-#### Task summary <!-- omit in toc -->
+#### Task summary 
 
 In this task you enabled replication from the Hyper-V host to Azure Migrate, and configured the replicated VM size in Azure.
 
@@ -1137,17 +1192,17 @@ In this task you enabled replication from the Hyper-V host to Azure Migrate, and
 
 In this task you will modify the settings for each replicated VM to use a static private IP address that matches the on-premises IP addresses for that machine.
 
-1. Still using the 'Azure Migrate: Server Migration - Replicating machines' blade, select on the **smarthotelweb1** virtual machine. This opens a detailed migration and replication blade for this machine. Take a moment to study this information.
+1. Still using the **Azure Migrate: Server Migration - Replicating machines** blade, select the **smarthotelweb1** virtual machine. This opens a detailed migration and replication blade for this machine. Take a moment to study this information.
 
     ![Screenshot from the 'Azure Migrate: Server Migration - Replicating machines' blade with the smarthotelweb1 machine highlighted.](images/Exercise3/config-0.png)
 
-2. Select on **Compute and Network**, then **Edit**.
+2. Select **Compute and Network**, then **Edit**.
 
    ![Screenshot of the smarthotelweb1 blade with the 'Compute and Network' and 'Edit' links highlighted.](images/Exercise3/config-1.png)
 
-3. Confirm that the VM is configured to use the **F2s_v2 (2 cores, 4GB memory, 1 NICs)** VM size (or **DS2_v2 or D2s_v3** if using an Azure Pass subscription) and 'Use managed disks' is set to **Yes**.
+3. Confirm that the VM is configured to use the **F2s_v2 (2 cores, 4GB memory, 1 NICs)** VM size (or **DS2_v2 or D2s_v3** if using an Azure Pass subscription) and that **Use managed disks** is set to **Yes**.
 
-4. Under **Network Interfaces**, select on **InternalNATSwitch** to open the network interface settings.
+4. Under **Network Interfaces**, select **InternalNATSwitch** to open the network interface settings.
 
     ![Screenshot showing the link to edit the network interface settings for a replicated VM.](images/Exercise3/nic.png)
 
@@ -1158,10 +1213,12 @@ In this task you will modify the settings for each replicated VM to use a static
 6. Select **OK** to close the network interface settings blade, then **Save** the smarthotelweb1 settings.
 
 7. Repeat these steps to configure the private IP address for the other VMs.
-    - For **smarthotelweb2** use private IP address **192.168.0.5**.
-    - For **UbuntuWAF** use private IP address **192.168.0.8**.
+ 
+    - For **smarthotelweb2** use private IP address **192.168.0.5**
+  
+    - For **UbuntuWAF** use private IP address **192.168.0.8**
 
-#### Task summary <!-- omit in toc -->
+#### Task summary
 
 In this task you modified the settings for each replicated VM to use a static private IP address that matches the on-premises IP addresses for that machine
 
@@ -1173,11 +1230,11 @@ In this task you will perform a migration of the UbuntuWAF, smarthotelweb1, and 
 
 > **Note:** In a real-world scenario, you would perform a test migration before the final migration. To save time, you will skip the test migration in this lab. The test migration process is very similar to the final migration.
 
-1. Return to the 'Azure Migrate: Server Migration' overview blade. Under 'Step 3: Migrate', select the **Migrate** button.
+1. Return to the **Azure Migrate: Server Migration** overview blade. Under **Step 3: Migrate**, select **Migrate**.
 
     ![Screenshot of the 'Azure Migrate: Server Migration' overview blade, with the 'Migrate' button highlighted.](images/Exercise3/migrate-1.png)
 
-2. On the 'Migrate' blade, select the 3 virtual machines then select **Migrate** to start the migration process.
+2. On the **Migrate** blade, select the 3 virtual machines then select **Migrate** to start the migration process.
 
     ![Screenshot of the 'Migrate' blade, with 3 machines selected and the 'Migrate' button highlighted.](images/Exercise3/migrate-2.png)
 
@@ -1199,7 +1256,7 @@ In this task you will perform a migration of the UbuntuWAF, smarthotelweb1, and 
 
    ![Screenshot showing resources created by the test failover (VMs, disks, and network interfaces).](images/Exercise3/migrate-6.png)
 
-#### Task summary <!-- omit in toc -->
+#### Task summary
 
 In this task you used Azure Migrate to create Azure VMs using the settings you have configured, and the data replicated from the Hyper-V machines. This migrated your on-premises VMs to Azure.
 
@@ -1209,19 +1266,26 @@ We will need to access our newly-migrated virtual machines to make some configur
 
 Azure Bastion requires a dedicated subnet within the same virtual network as the virtual machines. Unfortunately, our SmartHotelVNet does not have any free network space available. To address this, we will first extend the network space.
 
-1.  Navigate to the **SmartHotelVNet** virtual network, then select **Address space**.  Add the address space **10.10.0.0/24**, and **Save**.
+1.  Navigate to the **SmartHotelVNet** virtual network, then select **Address space** under **Settings** on the left.  Add the address space **10.10.0.0/24**, and **Save**.
 
-2.  Select **Subnets**, and add a new subnet named **AzureBastionSubnet**, with address space **10.10.0.0/27**.
+2.  Select **Subnets** under **Settings** on the left, and add a new subnet named **AzureBastionSubnet**, with address space **10.10.0.0/27**.
 
 3.  Select **+ Create a resource**, then search for and select **Bastion**, then **Create**.
 
 4.  Fill in the **Create a Bastion** blade as follows:
+
     - Subscription: **Your subscription**
+  
     - Resource group: (Create new) **BastionRG**
+  
     - Name: **SmartHotelBastion**
+  
     - Region: **Same as SmartHotelVNet**
+  
     - Virtual Network: **SmartHotelVNet**
+  
     - Subnet: **AzureBastionSubnet**
+  
     - Public IP address: (Create new) **Bastion-IP**
 
     ![Screenshot showing the 'Create a Bastion' blade.](images/Exercise3/bastion-create.png)
@@ -1238,19 +1302,19 @@ On the migrated VM **smarthotelweb2**, this configuration needs to be updated to
 
 > **Note:** You do not need to update any configuration files on **smarthotelweb1** or the **UbuntuWAF** VMs, since the migration has preserved the private IP addresses of all virtual machines they connect with.
 
-1. Open to the **smarthotelweb2** VM overview blade, and select **Connect**. Select **Bastion** and connect to the machine with the username **Administrator** and the password **demo!pass123**.
+1. Navigate to the **smarthotelweb2** VM overview blade, and select **Connect**. Select **Bastion** and connect to the machine with the username **Administrator** and the password **demo!pass123**.
 
     ![Screenshot showing the Azure Bastion connection blade.](images/Exercise3/web2-connect.png)
 
 2. In the **smarthotelweb2** remote desktop session, open Windows Explorer and navigate to the **C:\\inetpub\\SmartHotel.Registration.Wcf** folder. Double-select the **Web.config** file and open with Notepad.
 
-8. Update the **DefaultConnection** setting to connect to your Azure SQL Database.
+3. Update the **DefaultConnection** setting to connect to your Azure SQL Database.
 
     You can find the connection string for the Azure SQL Database in the Azure portal by browsing to the database, and selecting **Show database connection strings**.
 
      ![Screenshot showing the 'Show database connection strings' link for an Azure SQL Database.](images/Exercise3/show-connection-strings.png)
 
-    Copy the connection string, and paste into the web.config file on **smarthotelweb2**, replacing the existing connection string.  **Be careful not to overwrite the 'providerName' parameter which is specified after the connection string.**
+    Copy the **ADO.NET** connection string, and paste into the web.config file on **smarthotelweb2**, replacing the existing connection string.  **Be careful not to overwrite the 'providerName' parameter which is specified after the connection string.**
 
     **Note:** You may need to open the clipboard panel on the left-hand edge of the Bastion window, paste the connection string there, and then paste into the VM.
 
@@ -1258,9 +1322,9 @@ On the migrated VM **smarthotelweb2**, this configuration needs to be updated to
 
     ![Screenshot showing the user ID and Password in the web.config database connection string.](images/Exercise3/web2-connection-string.png)
 
-9.  **Save** the `web.config` file and exit your Bastion remote desktop session.
+4.  **Save** the `web.config` file and exit your Bastion remote desktop session.
 
-#### Task summary <!-- omit in toc -->
+#### Task summary 
 
 In this task, you updated the **smarthotelweb2** configuration to connect to the Azure SQL Database.
 
@@ -1288,7 +1352,7 @@ In this task, you will associate a public IP address with the UbuntuWAF VM. This
 
     ![Screenshot showing the SmartHotel application.](images/Exercise3/smarthotel.png)
 
-#### Task summary <!-- omit in toc -->
+#### Task summary 
 
 In this task, you assigned a public IP address to the UbuntuWAF VM and verified that the SmartHotel application is now working in Azure.
 
@@ -1297,11 +1361,17 @@ In this task, you assigned a public IP address to the UbuntuWAF VM and verified 
 There are a number of post-migration steps that should be completed before the migrated services is ready for production use. These include:
 
 - Installing the Azure VM Agent
+
 - Cleaning up migration resources
+
 - Enabling backup and disaster recovery
+
 - Encrypting VM disks
+
 - Ensuring the network is properly secured
+
 - Ensuring proper subscription governance is in place, such as role-based access control and Azure Policy
+
 - Reviewing recommendations from Azure Advisor and Security Center
 
 In this task you will install the Azure Virtual Machine Agent (VM Agent) on your migrated Azure VMs and clean up any migration resources. The remaining steps are common for any Azure application, not just migrations, and are therefore out of scope for this hands-on lab.
@@ -1320,7 +1390,7 @@ In this task you will install the Azure Virtual Machine Agent (VM Agent) on your
 
     **Note:** You may need to open the clipboard panel on the left-hand edge of the Bastion window, paste the URL, and then paste into the VM.
 
-3. After the installer has downloaded, run it. Select **Next**, **I accept the terms in the License Agreement**, and then **Next** again. Select **Finish**.
+3. After the installer has downloaded, run it. Select **Next**, Select **I accept the terms in the License Agreement**, and then **Next** again. Select **Finish**.
 
     ![Screenshot showing the Windows installer for the Azure VM Agent.](images/Exercise3/vm-agent-win.png)
 
@@ -1328,7 +1398,7 @@ In this task you will install the Azure Virtual Machine Agent (VM Agent) on your
 
 You will now install the Linux version of the Azure VM Agent on the Ubuntu VM. All Linux distributions supports by Azure have integrated the Azure VM Agent into their software repositories, making installation easy in most cases.
 
-5. In the Azure portal, locate the **UbuntuWAF** VM and **Connect** to the VM using Azure Bastion, with the user name **demouser** and password **demo!pass123**. Since this is a Linux VM, Bastion will create an SSH session.note the public IP address.
+5. In the Azure portal, locate the **UbuntuWAF** VM and **Connect** to the VM using Azure Bastion, with the user name **demouser** and password **demo!pass123**. Since this is a Linux VM, Bastion will create an SSH session. You may need to enter the credentials again. 
  
 6. In the SSH session, enter the following command:
 
@@ -1338,17 +1408,19 @@ You will now install the Linux version of the Azure VM Agent on the Ubuntu VM. A
 
     When prompted, enter the password **demo!pass123**. At the *Do you want to continue?* prompt, type **Y** and press **Enter**.
 
+    **Note:** You may need to open the clipboard panel on the left-hand edge of the Bastion window, paste the command, and then paste into the VM.
+
     ![Screenshot showing the Azure VM Agent install experience on Ubuntu.](images/Exercise3/ubuntu-agent-1.png)
 
 7. Wait for the installer to finish, then close the terminal window and the Ubuntu VM window.
 
 To demonstrate that the VM Agent is installed, we will now execute the 'Run command' feature from the Azure portal. For more information on the VM Agent, see [Windows VM Agent](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) and [Linux VM Agent](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux).
 
-8. Navigate to the **SmartHotelWeb** blade. Under 'Operations', select **Run command**, followed by **IPConfig**, followed by **Run**. After a few seconds, you should see the output of the IPConfig command.
+8. Navigate to the **smarthotelweb1** blade. Under **Operations**, select **Run command**, followed by **IPConfig**, followed by **Run**. After a few seconds, you should see the output of the IPConfig command.
 
     ![Screenshot showing the Run command feature.](images/Exercise3/run-command.png)
 
-9.  As a final step, you will now clean up the resources that were created to support the migration and are no longer needed. These include the Azure Migrate project, the Recovery Service Vault (Azure Site Recovery resource) used by  Azure Migrate: Server Migration, and the Database Migration Service instance. Also included are various secondary resources such as the Log Analytics workspace used by the Dependency Visualization, the storage account used by Azure Migrate: Server Migration, and a Key Vault instance.
+9. As a final step, you will now clean up the resources that were created to support the migration and are no longer needed. These include the Azure Migrate project, the Recovery Service Vault (Azure Site Recovery resource) used by  Azure Migrate: Server Migration, and the Database Migration Service instance. Also included are various secondary resources such as the Log Analytics workspace used by the Dependency Visualization, the storage account used by Azure Migrate: Server Migration, and a Key Vault instance.
 
     Because all of these temporary resources have been deployed to a separate **AzureMigrateRG** resource group, deleting them is as simple as deleting the resource group. Simply navigate to the resource group blade in the Azure portal, select **Delete resource group** and complete the confirmation prompts.
 
@@ -1368,7 +1440,7 @@ Duration: 10 minutes
 
 You should complete all of these steps *after* attending the Hands-on lab. Failure to delete the resources created during the lab will result in continued billing.
 
-1. Delete the resource group containing the SmartHotelHost.
+1. Delete the **SmartHotelHostRG** resource group containing the SmartHotelHost.
 
 2. Delete the **SmartHotelDBRG** resource group containing the Azure SQL Database.
 
