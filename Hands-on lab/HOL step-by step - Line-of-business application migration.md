@@ -200,7 +200,7 @@ In this task, you will deploy and configure the Azure Migrate appliance in the o
 
     ![Screenshot of the Azure portal search box, searching for the SmartHotelHost virtual machine.](images/Exercise1/find-smarthotelhost.png)
 
-3. Select **Connect**, click **RDP**, then download the RDP file and connect to the virtual machine using username **demouser** and password **demo!pass123**.
+3. Select **Connect**, select **RDP**, then download the RDP file and connect to the virtual machine using username **demouser** and password **demo!pass123**.
 
 4. In Server Manager, select **Tools**, then **Hyper-V Manager** (if Server Manager does not open automatically, open it by selecting **Start**, then **Server Manager**). In Hyper-V manager, select **SMARTHOTELHOST**. You should now see a list of the four VMs that comprise the on-premises SmartHotel application.
 
@@ -356,7 +356,7 @@ In this task, you will use Azure Migrate to create a migration assessment for th
 
 7. Select **Assessments** to see a list of assessments. Then select the actual assessment.
 
-    ![Screenshot showing a list of Azure Migrate assessments. There is only one assessment in the list. It has been highligted.](images/Exercise1/assessment-list.png)
+    ![Screenshot showing a list of Azure Migrate assessments. There is only one assessment in the list. It has been highlighted.](images/Exercise1/assessment-list.png)
 
 8. Take a moment to study the assessment overview.
 
@@ -400,7 +400,7 @@ In this task, you will configure the Azure Migrate dependency visualization feat
 
     ![Screenshot of the Azure Migrate 'Configure OMS workspace' blade.](images/Exercise1/configure-oms.png)
 
-4. Wait for the workspace to be deployed. Once it is deployed, navigate to it and click **Advanced settings**. Make a note of the **Workspace ID** and **Primary Key** (for example by using Notepad).
+4. Wait for the workspace to be deployed. Once it is deployed, navigate to it and select **Advanced settings**. Make a note of the **Workspace ID** and **Primary Key** (for example by using Notepad).
 
     ![Screenshot of part of the Azure Migrate 'Dependencies' blade, showing the OMS workspace ID and key.](images/Exercise1/workspace-id-key.png)
 
@@ -412,9 +412,9 @@ In this task, you will configure the Azure Migrate dependency visualization feat
 
     ![Screenshot from Hyper-V manager highlighting the 'Connect' button for the smarthotelweb1 VM.](images/Exercise1/connect-web1.png)
 
-7. Click **Connect** again when prompted and log in to the **Administrator** account using the password **demo!pass123**.
+7. Select **Connect** again when prompted and log in to the **Administrator** account using the password **demo!pass123**.
 
-8. Open **Internet Explorer**, and paste the link to the portal into the address bar. You may be prompted to sign in again. Click the 64 bit download link and run the installer. 
+8. Open **Internet Explorer**, and paste the link to the portal into the address bar. You may be prompted to sign in again. Choose the 64 bit download link and run the installer. 
 
     **Note:** If Internet Explorer does not load the site properly you may need to install Chrome on the VM. 
 
@@ -448,7 +448,7 @@ In this task, you will configure the Azure Migrate dependency visualization feat
 
 14. Enter 'yes' when prompted whether to connect. Use the password **demo!pass123**.
 
-    ![Screenshot showing the command prompt with a SSH session to UbuntuWAF.](images/Exercise1/ssh.png)
+    ![Screenshot showing the command prompt with an SSH session to UbuntuWAF.](images/Exercise1/ssh.png)
 
 15. Enter the following command, followed by the password **demo!pass123** when prompted:
 
@@ -550,7 +550,7 @@ In this task you will create a new Azure SQL database to migrate the on-premises
 
 1. Open the Azure portal at https://portal.azure.com and log in using your subscription credentials.
 
-2. Expand the portal's left navigation by clicking **Show portal menu** in the top left then select **+ Create a resource**, then select **Databases**, then select **SQL Database**.
+2. Expand the portal's left navigation by selecting **Show portal menu** in the top left then select **+ Create a resource**, then select **Databases**, then select **SQL Database**.
 
     ![Azure portal screenshot showing the select path to create a SQL Database.](images/Exercise2/new-sql-db.png)
 
@@ -562,7 +562,7 @@ In this task you will create a new Azure SQL database to migrate the on-premises
   
     - Database name: **smarthoteldb**
   
-    - Server: Select **Create new** and fill in the New server blade as follows then click **OK**:
+    - Server: Select **Create new** and fill in the New server blade as follows then select **OK**:
   
         - Server name: **smarthoteldb\[unique number\]**
   
