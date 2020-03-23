@@ -74,7 +74,7 @@ Duration: 1 hour 15 minutes
 
 1. Deploy the template **SmartHotelHost.json** to a new resource group. This template deploys a virtual machine running nested Hyper-V, with 4 nested VMs. This comprises the 'on-premises' environment which you will assess and migrate during this lab.
 
-    You can deploy the template by selecting on the 'Deploy to Azure' button below. You will need to create a new resource group. The suggested resource group name to use is **SmartHotelHostRG**. You will also need to select a location close to you to deploy the template to and agree to the terms and conditions. Then choose **Purchase**. 
+    You can deploy the template by selecting the 'Deploy to Azure' button below. You will need to create a new resource group. The suggested resource group name to use is **SmartHotelHostRG**. You will also need to select a location close to you to deploy the template to and agree to the terms and conditions. Then choose **Purchase**. 
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fcloudworkshop.blob.core.windows.net%2Fline-of-business-application-migration%2Fmar-2020-updates%2FSmartHotelHost.json" target="_blank">![Button to deploy the SmartHotelHost template to Azure.](images/BeforeTheHOL/deploy-to-azure.png "Deploy the SmartHotelHost template to Azure")</a>
 

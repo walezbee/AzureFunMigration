@@ -150,7 +150,9 @@ In this exercise, you will use Azure Migrate: Server Assessment to assess the on
 
 ### Task 1: Create the Azure Migrate project and add assessment and migration tools
 
-In this task, you will create the Azure Migrate project and select the migration assessment tool.
+In this task, you will create the Azure Migrate project and select the assessment and migration tools.
+
+**Note:** In this lab, you will use the Microsoft-provided assessment and migration tools within Azure Migrate. A number of third-party tools are also integrated with Azure Migrate for both assessment and migration. You may wish to spend some time exploring these third-party options outside of this lab.
 
 1. Open your browser, navigate to **https://portal.azure.com**, and log in with your Azure subscription credentials.
 
@@ -208,7 +210,7 @@ In this task, you will deploy and configure the Azure Migrate appliance in the o
 
     You will now deploy the Azure Migrate appliance virtual machine.  Normally, you would first need to download the .ZIP file containing the appliance to your Hyper-V host, and unzip it. To save time, these steps have been completed for you.
 
-5. Back in Hyper-V Manager, under **Actions**, select **Import Virtual Machine...** to open the **Import Virtual Machine** wizard.
+5. In Hyper-V Manager, under **Actions**, select **Import Virtual Machine...** to open the **Import Virtual Machine** wizard.
 
     ![Screenshot of Hyper-V Manager, with the 'Import Virtual Machine' action highlighted.](images/Exercise1/import-vm-1.png)
 
@@ -222,7 +224,7 @@ In this task, you will deploy and configure the Azure Migrate appliance in the o
 
 9. At the **Choose Import Type** step, keep the default setting **Register the virtual machine in-place**. Select **Next**.
 
-10. At the **Connect Network** step, you will see an error that the virtual switch previously used by the Azure Migrate appliance could not be found. From the 'Connection' drop down, select the **Azure Migrate Switch** you created earlier, then select **Next**.
+10. At the **Connect Network** step, you will see an error that the virtual switch previously used by the Azure Migrate appliance could not be found. From the 'Connection' drop down, select the **Azure Migrate Switch**, then select **Next**.
 
     ![Screenshot of the Hyper-V 'Import Virtual Machine' wizard at the 'Connect Network' step. The 'Azure Migrate Switch' has been selected.](images/Exercise1/import-vm-4.png)
 
@@ -230,7 +232,7 @@ In this task, you will deploy and configure the Azure Migrate appliance in the o
     >
     > The Hyper-V environment has a NAT network using the IP address space 192.168.0.0/16. The internal NAT switch used by the SmartHotel application uses the subnet 192.168.0.0/24, and each VM in the application has been assigned a static IP address from this subnet.
     >
-    > The Azure Migrate Appliance will be connected to a separate subnet 192.168.1.0/24, which has been set up for you. Using the 'AzureMigrateSwitch' connects the appliance to this subnet. The appliance is assigned an IP address from this subnet using a DHCP service running on the SmartHotelHost.
+    > The Azure Migrate Appliance will be connected to a separate subnet 192.168.1.0/24, which has been set up for you. Using the 'Azure Migrate Switch' connects the appliance to this subnet. The appliance is assigned an IP address from this subnet using a DHCP service running on the SmartHotelHost.
 
 11. Review the summary page, then select **Finish** to create the Azure Migrate appliance VM.
 
@@ -288,7 +290,7 @@ In this task, you will configure the Azure Migrate appliance and use it to compl
 
 11. In the next step, **Provide Hyper-V hosts details**, enter the user name **demouser** and password **demo!pass123**. These are the credentials for the Hyper-V host. Enter **Host login** as the friendly name, then select **Save details**.
 
-    > **Note:** The Azure Migrate appliance should have picked up your local keyboard mapping. Select the 'eyeball' in the password box to check the password was entered correctly.
+    > **Note:** The Azure Migrate appliance may not have picked up your local keyboard mapping. Select the 'eyeball' in the password box to check the password was entered correctly.
 
     ![Screenshot of the Azure Migrate appliance configuration wizard, showing the Hyper-V host credentials.](images/Exercise1/appliance-config-5.png)
 
