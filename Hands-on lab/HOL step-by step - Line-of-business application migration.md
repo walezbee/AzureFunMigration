@@ -1202,7 +1202,7 @@ In this task you will modify the settings for each replicated VM to use a static
 
    ![Screenshot of the smarthotelweb1 blade with the 'Compute and Network' and 'Edit' links highlighted.](images/Exercise3/config-1.png)
 
-3. Confirm that the VM is configured to use the **F2s_v2 (2 cores, 4GB memory, 1 NICs)** VM size (or **DS2_v2 or D2s_v3** if using an Azure Pass subscription) and that **Use managed disks** is set to **Yes**.
+3. Confirm that the VM is configured to use the **F2s_v2** VM size (or **DS2_v2 or D2s_v3** if using an Azure Pass subscription) and that **Use managed disks** is set to **Yes**.
 
 4. Under **Network Interfaces**, select **InternalNATSwitch** to open the network interface settings.
 
