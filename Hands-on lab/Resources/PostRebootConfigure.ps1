@@ -82,7 +82,7 @@ Function Set-VMNetworkConfiguration {
     }
 }
 
-Function Unzip-Files {
+Function Expand-Files {
     Param (
         [Object]$Files,
         [string]$Destination
@@ -94,7 +94,9 @@ Function Unzip-Files {
 
         write-output "Start unzip: $fileName to $Destination"
         
-        (new-object -com shell.application).namespace($Destination).CopyHere((new-object -com shell.application).namespace($fileName).Items(),16)
+        $7zEXE = "$opsDir\7z\7za.exe"
+
+        cmd /c "$7zEXE x -y -o$Destination $fileName" | Add-Content $cmdLogPath
         
         write-output "Finish unzip: $fileName to $Destination"
     }
@@ -165,8 +167,11 @@ Function Rearm-VM {
     Write-Output "Re-arm complete"
 }
 
-Start-Transcript "C:\PostRebootConfigure_log.txt"
-$ErrorActionPreference = 'SilentlyContinue'
+Start-Transcript -Path "C:\PostRebootConfigure_log.txt"
+$cmdLogPath = "C:\PostRebootConfigure_log_cmd.txt"
+
+Start-Sleep 60
+$ErrorActionPreference = 'continue'
 Import-Module BitsTransfer
 
 # Create paths
@@ -182,28 +187,28 @@ Unregister-ScheduledTask -TaskName "SetUpVMs" -Confirm:$false
 
 # Download AzCopy. We won't use the aka.ms/downloadazcopy link in case of breaking changes in later versions
 Write-Output "Download and install AzCopy"
-$azcopyUrl = "https://cloudworkshop.blob.core.windows.net/line-of-business-application-migration/azcopy_windows_amd64_10.1.1.zip"
+$azcopyUrl = "https://cloudworkshop.blob.core.windows.net/line-of-business-application-migration/mar-2020-updates/azcopy_windows_amd64_10.1.1.zip"
 $azcopyZip = "$opsDir\azcopy.zip"
 Start-BitsTransfer -Source $azcopyUrl -Destination $azcopyZip
 $azcopyZipfile = Get-ChildItem -Path $azcopyZip
-Unzip-Files -Files $azcopyZipfile -Destination $opsDir
+Expand-Files -Files $azcopyZipfile -Destination $opsDir
 $azcopy = "$opsDir\azcopy_windows_amd64_10.1.1\azcopy.exe"
 
 # Download SmartHotel VMs from blob storage
 # Also download Azure Migrate appliance (saves time in lab later)
 Write-Output "Download nested VM zip files using AzCopy"
-$container = 'https://cloudworkshop.blob.core.windows.net/line-of-business-application-migration'
+$sourceFolder = 'https://cloudworkshop.blob.core.windows.net/line-of-business-application-migration/mar-2020-updates'
 
-cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/SmartHotelWeb1.zip $tempDir\SmartHotelWeb1.zip"
-cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/SmartHotelWeb2.zip $tempDir\SmartHotelWeb2.zip"
-cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/SmartHotelSQL1.zip $tempDir\SmartHotelSQL1.zip"
-cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/UbuntuWAF.zip $tempDir\UbuntuWAF.zip"
-cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $container/AzureMigrateAppliance_v2.19.07.30.zip $tempDir\AzureMigrate.zip"
+cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $sourceFolder/SmartHotelWeb1.zip $tempDir\SmartHotelWeb1.zip" | Add-Content $cmdLogPath
+cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $sourceFolder/SmartHotelWeb2.zip $tempDir\SmartHotelWeb2.zip" | Add-Content $cmdLogPath
+cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $sourceFolder/SmartHotelSQL1.zip $tempDir\SmartHotelSQL1.zip" | Add-Content $cmdLogPath
+cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $sourceFolder/UbuntuWAF.zip $tempDir\UbuntuWAF.zip" | Add-Content $cmdLogPath
+cmd /c "$azcopy cp --check-md5 FailIfDifferentOrMissing $sourceFolder/AzureMigrateAppliance_v2.19.11.12.zip $tempDir\AzureMigrate.zip" | Add-Content $cmdLogPath
 
 # Unzip the VMs
 Write-Output "Unzip nested VMs"
 $zipfiles = Get-ChildItem -Path "$tempDir\*.zip"
-Unzip-Files -Files $zipfiles -Destination $vmDir
+Expand-Files -Files $zipfiles -Destination $vmDir
 
 # Create the NAT network
 Write-Output "Create internal NAT"
@@ -253,9 +258,9 @@ Wait-For-Website('http://192.168.0.8')
 
 # Rearm (extend evaluation license) and reboot each Windows VM
 Write-Output "Re-arming Windows VMs (extend eval licenses)"
-Rearm-VM -ComputerName "smarthotelweb1" -Username "Administrator" -Password "demo@pass123"
-Rearm-VM -ComputerName "smarthotelweb2" -Username "Administrator" -Password "demo@pass123"
-Rearm-VM -ComputerName "smarthotelSQL1" -Username "Administrator" -Password "demo@pass123"
+Rearm-VM -ComputerName "smarthotelweb1" -Username "Administrator" -Password "demo!pass123"
+Rearm-VM -ComputerName "smarthotelweb2" -Username "Administrator" -Password "demo!pass123"
+Rearm-VM -ComputerName "smarthotelSQL1" -Username "Administrator" -Password "demo!pass123"
 
 # Warm up the app after the re-arm reboots
 Write-Output "Waiting for SmartHotel reboot"
@@ -264,14 +269,19 @@ Wait-For-Website('http://192.168.0.8')
 # Add NAT forwarders
 # We do this and the firewall rules last so the user check that the web site is working when accessed via the host IP only works once all the other set-up is completed
 Write-Output "Create NAT rules"
-Add-NetNatStaticMapping -ExternalIPAddress "0.0.0.0" -ExternalPort 22   -Protocol TCP -InternalIPAddress "192.168.0.8" -InternalPort 22   -NatName $natName
 Add-NetNatStaticMapping -ExternalIPAddress "0.0.0.0" -ExternalPort 80   -Protocol TCP -InternalIPAddress "192.168.0.8" -InternalPort 80   -NatName $natName
 Add-NetNatStaticMapping -ExternalIPAddress "0.0.0.0" -ExternalPort 1433 -Protocol TCP -InternalIPAddress "192.168.0.6" -InternalPort 1433 -NatName $natName
 
 # Add a firewall rule for HTTP and SQL
 Write-Output "Create firewall rules"
-New-NetFirewallRule -DisplayName "SSH Inbound" -Direction Inbound -LocalPort 22 -Protocol TCP -Action Allow
 New-NetFirewallRule -DisplayName "HTTP Inbound" -Direction Inbound -LocalPort 80 -Protocol TCP -Action Allow
 New-NetFirewallRule -DisplayName "Microsoft SQL Server Inbound" -Direction Inbound -LocalPort 1433 -Protocol TCP -Action Allow
+
+# Set up separate subnet for Azure Migrate Appliance
+Write-Output "Create AzureMigrateSwitch"
+New-VMSwitch -Name AzureMigrateSwitch -SwitchType Internal
+$adapter = Get-NetAdapter | ? { $_.Name -like "*Migrat*" }
+Write-Output "Create gateway"
+New-NetIPAddress -IPAddress 192.168.1.1 -PrefixLength 24 -InterfaceIndex $adapter.ifIndex
 
 Stop-Transcript
