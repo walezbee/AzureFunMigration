@@ -35,29 +35,52 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
   - [Before the hands-on lab](#before-the-hands-on-lab)
   - [Exercise 1: Discover and assess the on-premises environment](#exercise-1-discover-and-assess-the-on-premises-environment)
     - [Task 1: Create the Azure Migrate project and add assessment and migration tools](#task-1-create-the-azure-migrate-project-and-add-assessment-and-migration-tools)
+      - [Task summary](#task-summary)
     - [Task 2: Deploy the Azure Migrate appliance](#task-2-deploy-the-azure-migrate-appliance)
+      - [Task summary](#task-summary-1)
     - [Task 3: Configure the Azure Migrate appliance](#task-3-configure-the-azure-migrate-appliance)
+      - [Task summary](#task-summary-2)
     - [Task 4: Create a migration assessment](#task-4-create-a-migration-assessment)
+      - [Task summary](#task-summary-3)
     - [Task 5: Configure dependency visualization](#task-5-configure-dependency-visualization)
+      - [Task summary](#task-summary-4)
     - [Task 6: Explore dependency visualization](#task-6-explore-dependency-visualization)
+      - [Task summary](#task-summary-5)
+    - [Exercise summary](#exercise-summary)
   - [Exercise 2: Migrate the Application Database](#exercise-2-migrate-the-application-database)
     - [Task 1: Register the Microsoft.DataMigration resource provider](#task-1-register-the-microsoftdatamigration-resource-provider)
+      - [Task summary](#task-summary-6)
     - [Task 2: Create an Azure SQL Database](#task-2-create-an-azure-sql-database)
+      - [Task summary](#task-summary-7)
     - [Task 3: Create the Database Migration Service](#task-3-create-the-database-migration-service)
+      - [Task summary](#task-summary-8)
     - [Task 4: Assess the on-premises database using Data Migration Assistant](#task-4-assess-the-on-premises-database-using-data-migration-assistant)
+      - [Task summary](#task-summary-9)
     - [Task 5: Create a DMS migration project](#task-5-create-a-dms-migration-project)
+      - [Task summary](#task-summary-10)
     - [Task 6: Migrate the database schema](#task-6-migrate-the-database-schema)
+      - [Task summary](#task-summary-11)
     - [Task 7: Migrate the on-premises data](#task-7-migrate-the-on-premises-data)
+      - [Task summary](#task-summary-12)
+    - [Exercise summary](#exercise-summary-1)
   - [Exercise 3: Migrate the application and web tiers using Azure Migrate: Server Migration](#exercise-3-migrate-the-application-and-web-tiers-using-azure-migrate-server-migration)
     - [Task 1: Create a Storage Account](#task-1-create-a-storage-account)
+      - [Task summary](#task-summary-13)
     - [Task 2: Create a Virtual Network](#task-2-create-a-virtual-network)
+      - [Task summary](#task-summary-14)
     - [Task 3: Register the Hyper-V Host with Azure Migrate Server Migration](#task-3-register-the-hyper-v-host-with-azure-migrate-server-migration)
+      - [Task summary](#task-summary-15)
     - [Task 4: Enable Replication from Hyper-V to Azure Migrate](#task-4-enable-replication-from-hyper-v-to-azure-migrate)
+      - [Task summary](#task-summary-16)
     - [Task 5: Configure static internal IP addresses for each VM](#task-5-configure-static-internal-ip-addresses-for-each-vm)
+      - [Task summary](#task-summary-17)
     - [Task 6: Server migration](#task-6-server-migration)
+      - [Task summary](#task-summary-18)
     - [Task 7: Enable Azure Bastion](#task-7-enable-azure-bastion)
     - [Task 8: Configure the database connection](#task-8-configure-the-database-connection)
+      - [Task summary](#task-summary-19)
     - [Task 9: Configure the public IP address and test the SmartHotel application](#task-9-configure-the-public-ip-address-and-test-the-smarthotel-application)
+      - [Task summary](#task-summary-20)
     - [Task 10: Post-migration steps](#task-10-post-migration-steps)
   - [After the hands-on lab](#after-the-hands-on-lab)
     - [Task 1: Clean up resources](#task-1-clean-up-resources)
@@ -647,9 +670,13 @@ In this task you will install and use Microsoft SQL Server Data Migration Assist
 
 8. Return to your remote desktop session with the **SmartHotelHost** VM. Open **Chrome** from the desktop and paste the Data Migration Assistant download URL into the address bar. Download and install the Data Migration Assistant.
 
-9. From within **SmartHotelHost** launch **Microsoft Data Migration Assistant** using the desktop icon. 
+9.  From within **SmartHotelHost**, open **Windows Explorer** and navigate to the **C:\Program Files\Microsoft Data Migration Assistant** folder. Open the **Dma.exe.config** file using Notepad. Search for **AzureMigrate** and remove the **\<\!--** and **--\>** around the line setting the **EnableAssessmentUploadToAzureMigrate** key. **Save** the file and close Notepad when done.
 
-10. In the Data Migration Assistant, select the **+ New** icon.  Fill in the project details as follows:
+  ![Screenshot showing the Dma.exe.config setting enabling upload to Azure Migrate.](images/Exercise2/dma-enable-upload.png)
+
+10.  From within **SmartHotelHost** launch **Microsoft Data Migration Assistant** using the desktop icon. 
+
+11. In the Data Migration Assistant, select the **+ New** icon.  Fill in the project details as follows:
 
     - Project type: **Assessment**
   
@@ -661,13 +688,13 @@ In this task you will install and use Microsoft SQL Server Data Migration Assist
   
     - Target server type: **Azure SQL Database**
      
-11. Select **Create** to create the project.
+12. Select **Create** to create the project.
 
     ![Screenshot showing the new DMA project creation dialog.](images/Exercise2/new-dma-assessment.png)
 
-12. On the **Options** tab select **Next**.
+13. On the **Options** tab select **Next**.
 
-13. On the **Select sources** screen, in the **Connect to a server** dialog box, provide the connection details to the SQL Server, and then select **Connect**.
+14. On the **Select sources** screen, in the **Connect to a server** dialog box, provide the connection details to the SQL Server, and then select **Connect**.
 
     - Server name: **192.168.0.6**
   
@@ -683,15 +710,15 @@ In this task you will install and use Microsoft SQL Server Data Migration Assist
 
     ![Screenshot showing the DMA connect to a server dialog.](images/Exercise2/connect-to-a-server.png)
 
-14. In the **Add sources** dialog box, select **SmartHotel.Registration**, then select **Add**.
+15. In the **Add sources** dialog box, select **SmartHotel.Registration**, then select **Add**.
 
     ![Screenshot of the DMA showing the 'Add sources' dialog.](images/Exercise2/add-sources.png)
 
-15. Select **Start Assessment** to start the assessment. 
+16. Select **Start Assessment** to start the assessment. 
 
     ![Screenshot of the DMA showing assessment in progress.](images/Exercise2/assessment-in-progress.png)
 
-16. **Wait** for the assessment to complete, and review the results. The results should show one unsupported feature, **Service Broker feature is not supported in Azure SQL Database**. For this migration, you can ignore this issue.
+17. **Wait** for the assessment to complete, and review the results. The results should show one unsupported feature, **Service Broker feature is not supported in Azure SQL Database**. For this migration, you can ignore this issue.
 
     > **Note**: For Azure SQL Database, the assessments identify feature parity issues and migration blocking issues.
 
@@ -699,17 +726,17 @@ In this task you will install and use Microsoft SQL Server Data Migration Assist
 
     >- The Compatibility issues category identifies partially supported or unsupported features that reflect compatibility issues that might block migrating on-premises SQL Server database(s) to Azure SQL Database. Recommendations are also provided to help you address those issues.
 
-17. Select **Upload to Azure Migrate**  to upload the database assessment to your Azure Migrate project (this button may take a few seconds to become enabled).
+18. Select **Upload to Azure Migrate**  to upload the database assessment to your Azure Migrate project (this button may take a few seconds to become enabled).
 
     ![Screenshot of the DMA showing the assessment results and the 'Update to Azure Migrate' button.](images/Exercise2/db-upload-btn.png)
 
-18. Enter your subscription credentials when prompted. Select your **Subscription** and **Azure Migrate Project** using the dropdowns, then select **Upload**. Once the upload is complete, select **OK** to dismiss the notification.
+19. Enter your subscription credentials when prompted. Select your **Subscription** and **Azure Migrate Project** using the dropdowns, then select **Upload**. Once the upload is complete, select **OK** to dismiss the notification.
 
     ![Screenshot of the DMA showing the assessment results upload panel.](images/Exercise2/db-upload.png)
 
     Once the upload is complete, select **OK** to dismiss the notification.
 
-19. Minimize the remote desktop window and return to the **Azure Migrate - Databases** blade in the Azure portal. Refreshing the page should now show the assessed database.
+20. Minimize the remote desktop window and return to the **Azure Migrate - Databases** blade in the Azure portal. Refreshing the page should now show the assessed database.
 
     ![Screenshot of the 'Azure Migrate - Databases' blade in the Azure portal, showing 1 assessed database.](images/Exercise2/db-assessed.png)
 
