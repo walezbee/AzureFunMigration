@@ -86,7 +86,7 @@ Duration: 1 hour 15 minutes
 
 2. Make a note of the public IP address.
 
-3. Open a browser window, and navigate to **http://\<SmartHotelHostIP-Address\>**. You should see the SmartHotel application, which is running on nested VMs within Hyper-V on the SmartHotelHost. (The application doesn't do much: you can refresh the page to see the list of guests or select 'CheckIn' or 'CheckOut' to toggle their status.)
+3. Open a browser tab, and navigate to **http://\<SmartHotelHostIP-Address\>**. You should see the SmartHotel application, which is running on nested VMs within Hyper-V on the SmartHotelHost. (The application doesn't do much: you can refresh the page to see the list of guests or select 'CheckIn' or 'CheckOut' to toggle their status.)
 
     ![Browser screenshot showing the SmartHotel application.](images/BeforeTheHOL/smarthotel.png)
 
