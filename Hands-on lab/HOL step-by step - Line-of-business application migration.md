@@ -76,7 +76,7 @@ After this hands-on lab, you will know the role of Azure Migrate and related mig
 
 Before the lab, you will have pre-deployed an on-premises infrastructure hosted in Hyper-V.  This infrastructure is hosting a multi-tier application called 'SmartHotel', using Hyper-V VMs for each of the application tiers.
 
-During the lab, you will migrate this entire application stack to Azure. This will include assessing the on-premises application using Azure Migrate; assessing the database migration using SQL Server Data Migration Assistant (DMA); migrating the database using the Azure Database Migration Service (DMS); and migrating the web and application tiers using Azure Migrate: Server Migration. This last step includes migration of both Windows and Linux VMs.
+During the lab, you will migrate this entire application stack to Azure. This will include assessing the on-premises application using Azure Migrate; assessing the database migration using Microsoft Data Migration Assistant (DMA); migrating the database using the Azure Database Migration Service (DMS); and migrating the web and application tiers using Azure Migrate: Server Migration. This last step includes migration of both Windows and Linux VMs.
 
 ## Solution architecture
 
@@ -100,7 +100,7 @@ Throughout this lab, you will use Azure Migrate as your primary tool for assessm
 
 To assess the Hyper-V environment, you will use Azure Migrate: Server Assessment. This includes deploying the Azure Migrate appliance on the Hyper-V host to gather information about the environment. For deeper analysis, the Microsoft Monitoring Agent and Dependency Agent will be installed on the VMs, enabling the Azure Migrate dependency visualization.
 
-The SQL Server database will be assessed by installing the Microsoft SQL Server Data Migration Assistant (DMA) on the Hyper-V host, and using it to gather information about the database. Schema migration and data migration will then be completed using the Azure Database Migration Service (DMS).
+The SQL Server database will be assessed by installing the Microsoft Data Migration Assistant (DMA) on the Hyper-V host, and using it to gather information about the database. Schema migration and data migration will then be completed using the Azure Database Migration Service (DMS).
 
 The application, web, and web proxy tiers will be migrated to Azure VMs using Azure Migrate: Server Migration. You will walk through the steps of building the Azure environment, replicating data to Azure, customizing VM settings, and performing a failover to migrate the application to Azure.
 
@@ -414,7 +414,7 @@ In this task, you will configure the Azure Migrate dependency visualization feat
 
 12. Return to the RDP session with the **SmartHotelHost** and open a command prompt using the desktop shortcut.  
 
-    > **Note**: The SmartHotelHost runs Windows Server 2019 with the Windows Subsystem for Linux enabled. This allows the command prompt to be used as an SSH client.
+    > **Note**: The SmartHotelHost runs Windows Server 2019 with the Windows Subsystem for Linux enabled. This allows the command prompt to be used as an SSH client. More info of supported Linux on Azure can be found here: https://Azure.com/Linux 
 
 13. Enter the following command to connect to the **UbuntuWAF** VM running in Hyper-V on the SmartHotelHost:
 
@@ -495,7 +495,7 @@ In this exercise, you used Azure Migrate to assess the on-premises environment. 
 
 Duration: 60 minutes
 
-In this exercise you will migrate the application database from the on-premises Hyper-V virtual machine to a new database hosted in the Azure SQL Database service. You will use the Azure Database Migration Service to complete the migration, which uses the SQL Server Data Migration Assistant for the database assessment and schema migration phases.
+In this exercise you will migrate the application database from the on-premises Hyper-V virtual machine to a new database hosted in the Azure SQL Database service. You will use the Azure Database Migration Service to complete the migration, which uses the Microsoft Data Migration Assistant for the database assessment and schema migration phases.
 
 ### Task 1: Register the Microsoft.DataMigration resource provider
 
@@ -523,6 +523,8 @@ In this task you registered the **Microsoft.DataMigration** resource provider wi
 ### Task 2: Create an Azure SQL Database
 
 In this task you will create a new Azure SQL database to migrate the on-premises database to.
+
+> **Note**: This lab focuses on simplicity to teach the participant the technical tools required. In the real world, more consideration should go into the long-term plan prior to creating the first DB. For instance: Will this DB live in an Azure landing zone? Who will operate this environment post-migration? What policies are in place that the migration team should be aware of prior to migration? These landing zone and operating model related topics are covered in the Cloud Adoption Framework’s Ready methodology. You don’t need to deviate from the script, but be familiar with the four-step process in that methodology, so you can field those types of a questions if they come up in the lab.
 
 1. Open the Azure portal at https://portal.azure.com and log in using your subscription credentials if it's not still up.
 
@@ -622,7 +624,7 @@ In this task you created a new Azure Database Migration Service resource.
 
 ### Task 4: Assess the on-premises database using Data Migration Assistant
 
-In this task you will install and use Microsoft SQL Server Data Migration Assistant (DMA) to assess the on-premises database. The DMA is integrated with Azure Migrate providing a single hub for assessment and migration tools.
+In this task you will install and use Microsoft Microsoft Data Migration Assistant (DMA) to assess the on-premises database. DMA is integrated with Azure Migrate providing a single hub for assessment and migration tools.
 
 1. Return to the **Azure Migrate** blade in the Azure portal. Select the **Overview** panel, then select **Assess and migrate databases**.
 
@@ -924,7 +926,7 @@ In this task you used an off-line data migration activity in the Azure Database 
 
 ### Exercise summary 
 
-In this exercise you migrated the application database from on-premises to Azure SQL Database. The SQL Server Data Migration Assistant was used for migration assessment, and the Azure Database Migration Service was used for schema migration and data migration.
+In this exercise you migrated the application database from on-premises to Azure SQL Database. The Microsoft Data Migration Assistant was used for migration assessment, and the Azure Database Migration Service was used for schema migration and data migration.
 
 ## Exercise 3: Migrate the application and web tiers using Azure Migrate: Server Migration
 
@@ -936,7 +938,9 @@ Having migrated the virtual machines, you will reconfigure the application tier 
 
 ### Task 1: Create a Storage Account
 
+
 In this task you will create a new Azure Storage Account that will be used by Azure Migrate: Server Migration for storage of your virtual machine data during migration.
+    >**Note**: This lab focuses on simplicity to teach the participant the technical tools required. In the real world, more consideration should go into the long-term plan prior to migrating assets. For instance: Building on the questions in the last note about landing zones, VMs can become even more complex. The landing zone required to host VMs should also include considerations for network traffic, RBAC control, resource organization, & preferably governance. If time permits, have the participants deploy the CAF Migration Blueprint and CAF Foundation Blueprint prior to starting step 1 of this task, that will help demonstrate the value of a pre-defined landing zone. It will also help them see a path towards automated deployment of Infrastructure as code. Resources to help guide the participants: Landing zone definition, Implementation options, and CAF Blueprint deployment.
 
 1. In the Azure portal's left navigation, select **+ Create a resource**, then select **Storage**, followed by **Storage account**.
 
@@ -967,6 +971,7 @@ In this task you created a new Azure Storage Account that will be used by Azure 
 ### Task 2: Create a Virtual Network
 
 In this task you will create a new virtual network that will be used by your migrated virtual machines when they are migrated to Azure. (Azure Migrate will only create the VMs, their network interfaces, and their disks; all other resources must be staged in advance.)
+ >**Note**: Azure provides several options for deploying the right network configuration. After the lab, if you’d like to better understand your networking options, see the network decision guide, which builds on the Cloud Adoption Framework’s Azure landing zones. 
 
 You will also configure a private endpoint in this network for the SQL Database.
 
