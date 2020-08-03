@@ -414,7 +414,7 @@ In this task, you will configure the Azure Migrate dependency visualization feat
 
 12. Return to the RDP session with the **SmartHotelHost** and open a command prompt using the desktop shortcut.  
 
-    > **Note**: The SmartHotelHost runs Windows Server 2019 with the Windows Subsystem for Linux enabled. This allows the command prompt to be used as an SSH client. More info of supported Linux on Azure can be found here: https://Azure.com/Linux 
+    > **Note**: The SmartHotelHost runs Windows Server 2019 with the Windows Subsystem for Linux enabled. This allows the command prompt to be used as an SSH client. More info of supported Linux on Azure can be found here: https://Azure.com/Linux. 
 
 13. Enter the following command to connect to the **UbuntuWAF** VM running in Hyper-V on the SmartHotelHost:
 
@@ -940,7 +940,8 @@ Having migrated the virtual machines, you will reconfigure the application tier 
 
 
 In this task you will create a new Azure Storage Account that will be used by Azure Migrate: Server Migration for storage of your virtual machine data during migration.
-    >**Note**: This lab focuses on simplicity to teach the participant the technical tools required. In the real world, more consideration should go into the long-term plan prior to migrating assets. For instance: Building on the questions in the last note about landing zones, VMs can become even more complex. The landing zone required to host VMs should also include considerations for network traffic, RBAC control, resource organization, & preferably governance. If time permits, have the participants deploy the CAF Migration Blueprint and CAF Foundation Blueprint prior to starting step 1 of this task, that will help demonstrate the value of a pre-defined landing zone. It will also help them see a path towards automated deployment of Infrastructure as code. Resources to help guide the participants: Landing zone definition, Implementation options, and CAF Blueprint deployment.
+
+>**Note**: This lab focuses on simplicity to teach the participant the technical tools required. In the real world, more consideration should go into the long-term plan prior to migrating assets. For instance: Building on the questions in the last note about landing zones, VMs can become even more complex. The landing zone required to host VMs should also include considerations for network traffic, RBAC control, resource organization, & preferably governance. If time permits, have the participants deploy the CAF Migration Blueprint and CAF Foundation Blueprint prior to starting step 1 of this task, that will help demonstrate the value of a pre-defined landing zone. It will also help them see a path towards automated deployment of Infrastructure as code. Resources to help guide the participants: Landing zone definition, Implementation options, and CAF Blueprint deployment.
 
 1. In the Azure portal's left navigation, select **+ Create a resource**, then select **Storage**, followed by **Storage account**.
 
@@ -971,7 +972,8 @@ In this task you created a new Azure Storage Account that will be used by Azure 
 ### Task 2: Create a Virtual Network
 
 In this task you will create a new virtual network that will be used by your migrated virtual machines when they are migrated to Azure. (Azure Migrate will only create the VMs, their network interfaces, and their disks; all other resources must be staged in advance.)
- >**Note**: Azure provides several options for deploying the right network configuration. After the lab, if you’d like to better understand your networking options, see the network decision guide, which builds on the Cloud Adoption Framework’s Azure landing zones. 
+
+>**Note**: Azure provides several options for deploying the right network configuration. After the lab, if you’d like to better understand your networking options, see the network decision guide, which builds on the Cloud Adoption Framework’s Azure landing zones. 
 
 You will also configure a private endpoint in this network for the SQL Database.
 
