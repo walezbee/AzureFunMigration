@@ -206,21 +206,21 @@ In this task, you will deploy and configure the Azure Migrate appliance in the o
 
 You will now deploy the Azure Migrate appliance virtual machine.  Normally, you would first need to download the .ZIP file containing the appliance to your Hyper-V host, and unzip it. To save time, these steps have been completed for you.
 
-7. In Hyper-V Manager, under **Actions**, select **Import Virtual Machine...** to open the **Import Virtual Machine** wizard.
+8. In Hyper-V Manager, under **Actions**, select **Import Virtual Machine...** to open the **Import Virtual Machine** wizard.
 
     ![Screenshot of Hyper-V Manager, with the 'Import Virtual Machine' action highlighted.](images/Exercise1/import-vm-1.png)
 
-8. At the first step, **Before You Begin**, select **Next**.
+9. At the first step, **Before You Begin**, select **Next**.
 
-9.  At the **Locate Folder** step, select **Browse** and navigate to **F:\\VirtualMachines\\AzureMigrateAppliance** (the folder name may also include a version number), then choose **Select Folder**, then select **Next**.
+10.  At the **Locate Folder** step, select **Browse** and navigate to **F:\\VirtualMachines\\AzureMigrateAppliance** (the folder name may also include a version number), then choose **Select Folder**, then select **Next**.
 
     ![Screenshot of the Hyper-V 'Import Virtual Machine' wizard with the F:\VirtualMachines\AzureMigrateAppliance folder selected.](images/Exercise1/import-vm-2.png)
 
-10. At the **Select Virtual Machine** step, the **AzureMigrateAppliance** VM should already be selected. Select **Next**.
+11. At the **Select Virtual Machine** step, the **AzureMigrateAppliance** VM should already be selected. Select **Next**.
 
-11. At the **Choose Import Type** step, keep the default setting **Register the virtual machine in-place**. Select **Next**.
+12. At the **Choose Import Type** step, keep the default setting **Register the virtual machine in-place**. Select **Next**.
 
-12. At the **Connect Network** step, you will see an error that the virtual switch previously used by the Azure Migrate appliance could not be found. From the **Connection** drop down, select the **Azure Migrate Switch**, then select **Next**.
+13. At the **Connect Network** step, you will see an error that the virtual switch previously used by the Azure Migrate appliance could not be found. From the **Connection** drop down, select the **Azure Migrate Switch**, then select **Next**.
 
     ![Screenshot of the Hyper-V 'Import Virtual Machine' wizard at the 'Connect Network' step. The 'Azure Migrate Switch' has been selected.](images/Exercise1/import-vm-4.png)
 
@@ -230,9 +230,9 @@ You will now deploy the Azure Migrate appliance virtual machine.  Normally, you 
     >
     > The Azure Migrate Appliance will be connected to a separate subnet 192.168.1.0/24, which has been set up for you. Using the 'Azure Migrate Switch' connects the appliance to this subnet. The appliance is assigned an IP address from this subnet using a DHCP service running on the SmartHotelHost.
 
-13. Review the summary page, then select **Finish** to create the Azure Migrate appliance VM.
+14. Review the summary page, then select **Finish** to create the Azure Migrate appliance VM.
 
-14. In Hyper-V Manager, select the **AzureMigrateAppliance** VM, then select **Start** on the left.
+15. In Hyper-V Manager, select the **AzureMigrateAppliance** VM, then select **Start** on the left.
 
    ![Screenshot of Hyper-V Manager showing the start button for the Azure Migrate appliance.](images/Exercise1/start-migrate-appliance.png)
 
