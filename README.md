@@ -1,3 +1,5 @@
+Let us know how we’re doing!  Please take a moment to fill out the [Microsoft Cloud Workshop Survey]( https://forms.office.com/Pages/DesignPage.aspx#FormId=v4j5cvGGr0GRqy180BHbRyEtIpX7sDdChuWsXhzKJXJUNjFBVkROWDhSSVdYT0dSRkY4UVFCVzZBVy4u&Token=d8027e9aa480420fa80d97e143eee1ed) and help us improve our offerings.
+
 # Line-of-business application migration
 
 Fabrikam Fabrics is a major manufacturer and distributor of clothing and soft furnishing materials. The CTO, James Lynch, was hired 6 months ago with a mandate to address ever-increasing IT costs. He has identified a sprawling IT estate, including a substantial legacy server footprint with 448 servers and VMs identified to date. There is a complex web of dependencies between servers and no-one has a clear view of the entire estate.
