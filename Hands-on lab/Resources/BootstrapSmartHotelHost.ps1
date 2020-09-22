@@ -37,7 +37,7 @@ New-Item -Path $7zDir -ItemType directory -Force
 
 # Download post-migration script and 7z
 Write-Output "Download with Bits"
-$sourceFolder = 'https://cloudworkshop.blob.core.windows.net/line-of-business-application-migration/mar-2020-updates'
+$sourceFolder = 'https://cloudworkshop.blob.core.windows.net/line-of-business-application-migration/sept-2020'
 $downloads = @( `
      "$sourceFolder/PostRebootConfigure.ps1" `
     ,"$sourceFolder/7z/7za.exe" `
