@@ -262,7 +262,7 @@ In this task, you will configure the Azure Migrate appliance and use it to compl
 
 5.  Log in with the Administrator password **demo!pass123** (the login screen may pick up your local keyboard mapping, use the 'eyeball' icon to check).
 
-6.  **Wait.** After a minute or two, the Edge browser will open showing the Azure Migrate appliance configuration wizard (it can also be launched from the desktop shortcut).
+6.  **Wait.** After a minute or two, the browser will open showing the Azure Migrate appliance configuration wizard (it can also be launched from the desktop shortcut).
 
     On opening of the appliance configuration wizard, a pop-up with the license terms will appear. Accept the terms by selecting **I agree**.
 
