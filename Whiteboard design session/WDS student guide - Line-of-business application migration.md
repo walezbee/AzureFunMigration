@@ -9,7 +9,7 @@ Whiteboard design session student guide
 </div>
 
 <div class="MCWHeader3">
-June 2020
+October 2020
 </div>
 
 
@@ -49,7 +49,6 @@ In this whiteboard design session, you will look at how to design an Azure migra
 
 At the end of this workshop, you will be better able to design and implement the discovery and assessment of environments to evaluate their readiness for migrating to Azure using services including Azure Migrate and Azure Database Migration Service.
 
-
 ## Step 1: Review the customer case study 
 
 **Outcome**
@@ -71,10 +70,10 @@ Directions:  With all participants in the session, the facilitator/SME presents 
 Fabrikam Fabrics is a major manufacturer and distributor of clothing and soft furnishing materials. Founded in 1972 and based in Columbus, Ohio, their business comprises three major product families (clothing, upholstery, and technical fabrics). Customers comprise familiar brand-name clothing manufacturers and furniture manufacturers, and also includes large-scale uniform suppliers to the US military. Turnover in 2018 exceeded 350 million USD.
 
 The CTO, James Lynch, was hired 6 months ago from outside the company, with a mandate to address ever-increasing IT costs. He has identified a sprawling IT estate, including a substantial legacy server footprint. New servers and services have been accumulated over time, without consolidating existing infrastructure. This includes:
-- Windows servers including both x32 and x64 hardware running Windows Server 2003 through to 2016.
-- Linux servers running a mix of RHEL 6.10 and 7 series (7.2 through 7.6) and Ubuntu 16.04.
-- The above servers comprise both physical machines as well as VMs hosted on VMware infrastructure managed by vCenter 6.5.
-- Multiple database engines, including Microsoft SQL Server, PostgreSQL, and Cassandra.
+- Windows servers including both x32 and x64 hardware running Windows Server 2003 through to 2016
+- Linux servers running a mix of RHEL 6.10 and 7 series (7.2 through 7.6) and Ubuntu 16.04
+- The above servers comprise both physical machines as well as VMs hosted on VMware infrastructure managed by vCenter 6.5
+- Multiple database engines, including Microsoft SQL Server, PostgreSQL, and Cassandra
 
 In total, 448 servers and VMs have been identified to date, distributed across 5 main locations, all in the US. There is a complex web of dependencies between servers and no-one has a clear view of the entire estate. Fear of breaking an existing system has been one of the drivers of server count and sprawl.
 
@@ -91,10 +90,11 @@ To address this, James has proposed to the board that Fabrikam should migrate as
 4.  Where existing servers cannot be migrated, identify alternative migration strategies (refactor, re-architect, etc.) and their pros/cons.
    
 5.  Prior to migration, accurately forecast the costs associated with each migrated workload, including any third-party licensing costs.
-   
-6.  Post-migration, be able to track costs, control usage, cross-charge business owners, and identify cost-saving opportunities.
-   
 
+6.  Ensure the Azure environment used for the migrated applications is future-proof and follows best practices.
+   
+7.  Post-migration, be able to track costs, control usage, cross-charge business owners, and identify cost-saving opportunities.
+   
 ### Customer objections 
 
 1.  Owners of each business application need to approve any substantial application change, including migration. Business owners have indicated that they will require evidence that migration will be successful before granting approval.
@@ -143,11 +143,11 @@ Directions: With all participants at your table, respond to the following questi
 
 *Migration Execution*
 
-1.  What Azure components or configurations should be deployed prior to migration?
+1.  What Azure components or configurations should be deployed prior to migration? How can this Azure environment be made future-proof and aligned with best practices?
 
 2.  What tools are available for migration execution? Provide options for VMware VMs, physical servers, and databases.
    
-3.  What post-migration steps should be carried out for business-critical applications migrated to Azure?
+2.  What post-migration steps should be carried out for business-critical applications migrated to Azure?  What guidance is available to ensure nothing is missed?
 
 *Cost management and optimization*
 
@@ -211,11 +211,14 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 | Azure Database Migration Guide  | https://aka.ms/datamigration  |
 | Microsoft Data Migration Assistant (DMA) | https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017 |
 | Azure Data Migration Service | https://azure.microsoft.com/services/database-migration/ |
+| Azure VMware Solution | https://azure.microsoft.com/services/azure-vmware/ |
 | Azure SQL Database | https://azure.microsoft.com/services/sql-database/ |
 | Azure billing hub | https://docs.microsoft.com/azure/billing/ |
 | Azure cost management | https://azure.microsoft.com/services/cost-management/ |
 | Azure governance | https://azure.microsoft.com/solutions/governance/ |
 | Azure advisor | https://azure.microsoft.com/services/advisor/ |
-| Azure enterprise scaffold | https://docs.microsoft.com/azure/architecture/cloud-adoption/appendix/azure-scaffold |
+| Cloud Adoption Framework | https://docs.microsoft.com/azure/cloud-adoption-framework/ |
+| Well-Architected Framework | https://docs.microsoft.com/azure/architecture/framework/ |
+| Azure landing zones | https://docs.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/ |
 | Azure virtual datacenter | https://docs.microsoft.com/azure/architecture/vdc/ |
 | Building a cloud migration business case | https://docs.microsoft.com/azure/architecture/cloud-adoption/business-strategy/cloud-migration-business-case |

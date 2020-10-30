@@ -9,7 +9,7 @@ Whiteboard design session trainer guide
 </div>
 
 <div class="MCWHeader3">
-June 2020
+October 2020
 </div>
 
 
@@ -216,8 +216,10 @@ To address this, James has proposed to the board that Fabrikam should migrate as
 4.  Where existing servers cannot be migrated, identify alternative migration strategies (refactor, re-architect, etc.) and their pros/cons.
    
 5.  Prior to migration, accurately forecast the costs associated with each migrated workload, including any third-party licensing costs.
+
+6.  Ensure the Azure environment used for the migrated applications is future-proof and follows best practices.
    
-6.  Post-migration, be able to track costs, control usage, cross-charge business owners, and identify cost-saving opportunities.
+7.  Post-migration, be able to track costs, control usage, cross-charge business owners, and identify cost-saving opportunities.
    
 ### Customer objections 
 
@@ -267,11 +269,11 @@ Directions: With all participants at your table, respond to the following questi
 
 *Migration Execution*
 
-1.  What Azure components or configurations should be deployed prior to migration?
+1.  What Azure components or configurations should be deployed prior to migration? How can this Azure environment be made future-proof and aligned with best practices?
 
 2.  What tools are available for migration execution? Provide options for VMware VMs, physical servers, and databases.
    
-2.  What post-migration steps should be carried out for business-critical applications migrated to Azure?
+2.  What post-migration steps should be carried out for business-critical applications migrated to Azure? What guidance is available to ensure nothing is missed?
 
 *Cost management and optimization*
 
@@ -335,12 +337,15 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 | Azure Database Migration Guide  | https://aka.ms/datamigration  |
 | Microsoft Data Migration Assistant (DMA) | https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017 |
 | Azure Data Migration Service | https://azure.microsoft.com/services/database-migration/ |
+| Azure VMware Solution | https://azure.microsoft.com/services/azure-vmware/ |
 | Azure SQL Database | https://azure.microsoft.com/services/sql-database/ |
 | Azure billing hub | https://docs.microsoft.com/azure/billing/ |
 | Azure cost management | https://azure.microsoft.com/services/cost-management/ |
 | Azure governance | https://azure.microsoft.com/solutions/governance/ |
 | Azure advisor | https://azure.microsoft.com/services/advisor/ |
-| Azure enterprise scaffold | https://docs.microsoft.com/azure/architecture/cloud-adoption/appendix/azure-scaffold |
+| Cloud Adoption Framework | https://docs.microsoft.com/azure/cloud-adoption-framework/ |
+| Well-Architected Framework | https://docs.microsoft.com/azure/architecture/framework/ |
+| Azure landing zones | https://docs.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/ |
 | Azure virtual datacenter | https://docs.microsoft.com/azure/architecture/vdc/ |
 | Building a cloud migration business case | https://docs.microsoft.com/azure/architecture/cloud-adoption/business-strategy/cloud-migration-business-case |
 
@@ -475,16 +480,20 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
 *Migration Execution*
 
-1.  What Azure components or configurations should be deployed prior to migration?
+1.  What Azure components or configurations should be deployed prior to migration? How can this Azure environment be made future-proof and aligned with best practices?
 
-    Before migrating your first application, the Azure environment should be prepared. This includes:
+    Suppose you were building a new town or housing estate. Before building houses, you would first put in place the underlying infrastructure - electricity, gas, water, sewerage, telecoms, roads, and so on. Migrating an enterprise to Azure is similar - before migrating the applications (building houses), you need the underlying infrastructure.
+
+    In Azure, this underlying infrastructure includes:
     - Planning and creating Azure subscriptions
     - Planning the network: Azure virtual networks, including address spaces and subnets; network security devices such as Application Gateways or third-party devices; Active Directory and name resolution; on-premises connectivity
     - Defining best practices for Azure deployments, such as resource group structure, choice of region, use of templates, resource naming convention and use of resource locks
     - Defining governance controls, including identity and access management, role-based access, policy, blueprints, and cost management including internal charge-back and reporting
     - Planning operations for migrated workloads, including Azure Site Recovery, Azure Backup, Advisor, Security Center, update management, and monitoring
 
-For more information, see the [Azure Virtual Datacenter](https://docs.microsoft.com/azure/architecture/vdc/) and [Azure Enterprise Scaffold](https://docs.microsoft.com/azure/architecture/cloud-adoption/appendix/azure-scaffold) documentation in the Azure Architecture Center.
+    This is called an Azure **landing zone**. The [Microsoft Cloud Adoption Framework](https://docs.microsoft.com/azure/cloud-adoption-framework/) includes [detailed guidance on how to build your landing zone](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/). This includes the principles and design areas, as well as two implementation approaches - start small and expand, or start at enterprise scale.
+
+    Azure Blueprints includes out-of-the-box samples you can use to provision an initial landing zone, such as the [Azure Migration landing zone blueprint sameple](https://docs.microsoft.com/azure/governance/blueprints/samples/caf-migrate-landing-zone/). You can use this as-is, or as a starting point for your own landing zone blueprint.
 
 2.  What tools are available for migration execution? Provide options for VMware VMs, physical servers, and databases.
    
@@ -517,6 +526,8 @@ For more information, see the [Azure Virtual Datacenter](https://docs.microsoft.
 
     While Azure Migrate does not support assessment for physical servers, it does support migration, using the Azure Site Recovery migration engine. The approach and architecture are similar to that used for VMware VMs. Alternatively, a number of third-party migration tools is listed on the [Azure Migration hub](https://azure.microsoft.com/migration/) and integrated into Azure Migrate.
 
+    An alternative approach for migrating an on-premises VMware environment is to lift-and-shift into the [Azure VMware solution](https://azure.microsoft.com/services/azure-vmware/). This provides an Azure-hosted VMware environment. This approach offers speed of migration, application compatibility, and the ability to continue to use the tools and knowledge already embedded in the team. It does not offer all the advantages of a full cloud migration, but can still be very useful for difficult workloads or to meet aggresives schedules.
+
     For database migration, dedicated database migration tools should be preferred.
     
     For Microsoft SQL Server databases, the Azure Database Migration Service is recommended. This is a fully-managed service designed to streamline the process of migrating databases to Azure. It can scale to support multiple database migrations and migrate large databases. Two migration modes are supported: offline and online. Offline migration provides the simplest migration experience, but requires the application to be taken offline for the entire data replication process. Online migration synchronizes databases without downtime, giving a continual status of the number of pending changes. Once all changes are replicated, only a short downtime is required to cut over between databases.
@@ -525,18 +536,20 @@ For more information, see the [Azure Virtual Datacenter](https://docs.microsoft.
 
     For Cassandra databases, data can be copied using the CQL COPY command, or by provisioning an Azure Databricks deployment and using the table copy operation. Instructions for both methods are provided on the Azure Database Migration Guide, at https://datamigration.microsoft.com/scenario/cassandra-to-cosmos?step=1. Alternatively, the same guide also includes a [table of third-party migration tools](https://docs.microsoft.com/en-ie/azure/dms/dms-tools-matrix#migration-phase), and suggests Imanis Data as a potential migration tool in this case.
 
-3.  What post-migration steps should be carried out for business-critical applications migrated to Azure?
+3.  What post-migration steps should be carried out for business-critical applications migrated to Azure?  What guidance is available to ensure nothing is missed?
 
     An application should not be considered production-ready immediately upon completion of the migration process. A number of additional steps should be taken to harden the application for security, manageability and availability. These include:
     - Uninstall the Mobility Service Agent (installed during the migration process in the case of agent-based migration)
     - Install the [Azure VM agent](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows). This provides a number of critical manageability features for Azure VMs, including support for VM extensions and password reset.
+    - Verify correct configuration of availability sets or availability zones
     - Configure Azure Backup
     - Configure Azure Site Recovery (as a disaster recovery solution, not for migration)
     - Check network security groups and apply additional rules as necessary
-    - Verify correct configuration of availability sets or availability zones
     - Enable Azure Disk Encryption
     - Review cost forecasts and enable charge-back
     - Review additional recommendations from Azure Advisor and Azure Security Center
+
+    The [Azure Well-Architected Framework](https://docs.microsoft.com/azure/architecture/framework/) is a useful resource to review the migrated application against best practices.
 
 *Cost management and optimization*
 
@@ -569,7 +582,9 @@ For more information, see the [Azure Virtual Datacenter](https://docs.microsoft.
 
 3.  How can Fabrikam analyze and optimize their costs, post-migration? Include details of mechanisms for internal charge-back.
 
-    As part of their regular operations, Fabrikam should periodically review their deployments to ensure they are optimized for cost efficiency. This review should include:
+    As part of their regular operations, Fabrikam should periodically review their deployments to ensure they are optimized for cost efficiency. This review should follow the [Cost Optimization tenets of the Azure Well-Architected Framework](https://docs.microsoft.com/azure/architecture/framework/cost/overview)
+    
+    This review should include:
     - Does the solution make full use of the provisioned VM sizes or PaaS service SKUs? Can the services be moved to fewer or cheaper VMs, or to a lower-cost service SKU? Be aware that new VM families may offer better performance at lower cost than older VM families.
     - Does the solution run 24x7? Does it need to? Can costs be reduced by turning off or reducing the footprint at night or at weekends? This is easily implemented using the [Start/stop VMs during off hours](https://docs.microsoft.com/azure/automation/automation-solution-vm-management) solution from the Azure Marketplace.
     - Can auto-scale be used to further optimize the deployment footprint?
