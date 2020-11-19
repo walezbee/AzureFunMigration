@@ -9,7 +9,7 @@ Hands-on lab step-by-step
 </div>
 
 <div class="MCWHeader3">
-June 2020
+November 2020
 </div>
 
 
@@ -35,52 +35,29 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
   - [Before the hands-on lab](#before-the-hands-on-lab)
   - [Exercise 1: Discover and assess the on-premises environment](#exercise-1-discover-and-assess-the-on-premises-environment)
     - [Task 1: Create the Azure Migrate project and add assessment and migration tools](#task-1-create-the-azure-migrate-project-and-add-assessment-and-migration-tools)
-      - [Task summary](#task-summary)
     - [Task 2: Deploy the Azure Migrate appliance](#task-2-deploy-the-azure-migrate-appliance)
-      - [Task summary](#task-summary-1)
     - [Task 3: Configure the Azure Migrate appliance](#task-3-configure-the-azure-migrate-appliance)
-      - [Task summary](#task-summary-2)
     - [Task 4: Create a migration assessment](#task-4-create-a-migration-assessment)
-      - [Task summary](#task-summary-3)
     - [Task 5: Configure dependency visualization](#task-5-configure-dependency-visualization)
-      - [Task summary](#task-summary-4)
     - [Task 6: Explore dependency visualization](#task-6-explore-dependency-visualization)
-      - [Task summary](#task-summary-5)
-    - [Exercise summary](#exercise-summary)
   - [Exercise 2: Migrate the Application Database](#exercise-2-migrate-the-application-database)
     - [Task 1: Register the Microsoft.DataMigration resource provider](#task-1-register-the-microsoftdatamigration-resource-provider)
-      - [Task summary](#task-summary-6)
     - [Task 2: Create an Azure SQL Database](#task-2-create-an-azure-sql-database)
-      - [Task summary](#task-summary-7)
     - [Task 3: Create the Database Migration Service](#task-3-create-the-database-migration-service)
-      - [Task summary](#task-summary-8)
     - [Task 4: Assess the on-premises database using Data Migration Assistant](#task-4-assess-the-on-premises-database-using-data-migration-assistant)
-      - [Task summary](#task-summary-9)
     - [Task 5: Create a DMS migration project](#task-5-create-a-dms-migration-project)
-      - [Task summary](#task-summary-10)
     - [Task 6: Migrate the database schema](#task-6-migrate-the-database-schema)
-      - [Task summary](#task-summary-11)
     - [Task 7: Migrate the on-premises data](#task-7-migrate-the-on-premises-data)
-      - [Task summary](#task-summary-12)
-    - [Exercise summary](#exercise-summary-1)
   - [Exercise 3: Migrate the application and web tiers using Azure Migrate: Server Migration](#exercise-3-migrate-the-application-and-web-tiers-using-azure-migrate-server-migration)
     - [Task 1: Create a Storage Account](#task-1-create-a-storage-account)
-      - [Task summary](#task-summary-13)
     - [Task 2: Create a Virtual Network](#task-2-create-a-virtual-network)
-      - [Task summary](#task-summary-14)
     - [Task 3: Register the Hyper-V Host with Azure Migrate: Server Migration](#task-3-register-the-hyper-v-host-with-azure-migrate-server-migration)
-      - [Task summary](#task-summary-15)
     - [Task 4: Enable Replication from Hyper-V to Azure Migrate](#task-4-enable-replication-from-hyper-v-to-azure-migrate)
-      - [Task summary](#task-summary-16)
     - [Task 5: Configure static internal IP addresses for each VM](#task-5-configure-static-internal-ip-addresses-for-each-vm)
-      - [Task summary](#task-summary-17)
     - [Task 6: Server migration](#task-6-server-migration)
-      - [Task summary](#task-summary-18)
     - [Task 7: Enable Azure Bastion](#task-7-enable-azure-bastion)
     - [Task 8: Configure the database connection](#task-8-configure-the-database-connection)
-      - [Task summary](#task-summary-19)
     - [Task 9: Configure the public IP address and test the SmartHotel application](#task-9-configure-the-public-ip-address-and-test-the-smarthotel-application)
-      - [Task summary](#task-summary-20)
     - [Task 10: Post-migration steps](#task-10-post-migration-steps)
   - [After the hands-on lab](#after-the-hands-on-lab)
     - [Task 1: Clean up resources](#task-1-clean-up-resources)
@@ -105,7 +82,7 @@ During the lab, you will migrate this entire application stack to Azure. This wi
 
 The SmartHotel application comprises 4 VMs hosted in Hyper-V:
 
-- **Database tier** Hosted on the smarthotelSQL1 VM, which is running Windows Server 2016 and SQL Server 2017
+- **Database tier** Hosted on the smarthotelSQL1 VM, which is running Windows Server 2016 and SQL Server 2017.
 
 - **Application tier** Hosted on the smarthotelweb2 VM, which is running Windows Server 2012R2.
 
@@ -139,7 +116,7 @@ The application, web, and web proxy tiers will be migrated to Azure VMs using Az
 
 Refer to the [Before the HOL - Line-of-business application migration](./Before%20the%20HOL%20-%20Line-of-business%20application%20migration.md) setup guide manual before continuing to the lab exercises.
 
-**IMPORTANT: Allow at least 60 minutes to deploy the on-premises environment before you start the lab.**
+**IMPORTANT**: Allow at least 60 minutes to deploy the on-premises environment before you start the lab.
 
 ## Exercise 1: Discover and assess the on-premises environment
 
@@ -559,7 +536,7 @@ In this task you registered the **Microsoft.DataMigration** resource provider wi
 
 In this task you will create a new Azure SQL database to migrate the on-premises database to.
 
-> **Note**: This lab focuses on simplicity to teach the participant the technical tools required. In the real world, more consideration should go into the long-term plan prior to creating the first DB. For instance: Will this DB live in an Azure landing zone? Who will operate this environment post-migration? What policies are in place that the migration team should be aware of prior to migration? These landing zone and operating model related topics are covered in the Cloud Adoption Framework’s Ready methodology. You don’t need to deviate from the script, but be familiar with the four-step process in that methodology, so you can field those types of a questions if they come up in the lab.
+> **Note**: This lab focuses on simplicity to teach the participant the technical tools required. In the , more consideration should go into the long-term plan prior to creating the first DB. For instance: Will this DB live in an Azure landing zone? Who will operate this environment post-migration? What policies are in place that the migration team should be aware of prior to migration? These landing zone and operating model related topics are covered in the Cloud Adoption Framework’s Ready methodology. You don’t need to deviate from the script, but be familiar with the four-step process in that methodology, so you can field those types of a questions if they come up in the lab.
 
 1. Open the Azure portal at https://portal.azure.com and log in using your subscription credentials if it's not still up.
 
@@ -969,7 +946,7 @@ Having migrated the virtual machines, you will reconfigure the application tier 
 
 In this task you will create a new Azure Storage Account that will be used by Azure Migrate: Server Migration for storage of your virtual machine data during migration.
 
-> **Note:** This lab focuses on the technical tools required for workload migration. In a real world scenario, more consideration should go into the long-term plan prior to migrating assets. The landing zone required to host VMs should also include considerations for network traffic, access control, resource organization, and governance. For example, the CAF Migration Blueprint and CAF Foundation Blueprint can be used to deploy a pre-defined landing zone, and demonstrate the potential of an Infrastructure as Code (IaC) approach to infrastructure resource management. For more information, see [Azure Landing Zones](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/) and [Cloud Adoption Framework Azure Migration landing zone Blueprint sample](https://docs.microsoft.com/azure/governance/blueprints/samples/caf-migrate-landing-zone/).
+> **Note:** This lab focuses on the technical tools required for workload migration. In a real-world scenario, more consideration should go into the long-term plan prior to migrating assets. The landing zone required to host VMs should also include considerations for network traffic, access control, resource organization, and governance. For example, the CAF Migration Blueprint and CAF Foundation Blueprint can be used to deploy a pre-defined landing zone, and demonstrate the potential of an Infrastructure as Code (IaC) approach to infrastructure resource management. For more information, see [Azure Landing Zones](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/) and [Cloud Adoption Framework Azure Migration landing zone Blueprint sample](https://docs.microsoft.com/azure/governance/blueprints/samples/caf-migrate-landing-zone/).
 
 1. In the Azure portal's left navigation, select **+ Create a resource**, then search for and select **Storage account**, followed by **Create**.
 
@@ -1462,5 +1439,7 @@ You should complete all of these steps *after* attending the Hands-on lab. Failu
 4. Delete the **SmartHotelRG** resource group containing the migrated VMs and related infrastructure resources.
 
 5. Delete the **AzureMigrateRG** resource group containing the Azure Migrate resources (if not done already at the end of Exercise 3).
+
+You should follow all steps provided *after* attending the Hands-on lab.
 
 
