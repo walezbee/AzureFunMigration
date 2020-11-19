@@ -91,7 +91,7 @@ To address this, James has proposed to the board that Fabrikam should migrate as
    
 5.  Prior to migration, accurately forecast the costs associated with each migrated workload, including any third-party licensing costs.
 
-6.  Ensure the Azure environment used for the migrated applications is future-proof and follows best practices.
+6.  Ensure the Azure environment used for the migrated applications is follows recommended best practices.
    
 7.  Post-migration, be able to track costs, control usage, cross-charge business owners, and identify cost-saving opportunities.
    
