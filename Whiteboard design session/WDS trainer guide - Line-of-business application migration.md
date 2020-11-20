@@ -235,7 +235,7 @@ To address this, James has proposed to the board that Fabrikam should migrate as
 
 ### Infographic for common scenarios
 
-![Common scenarios include: Azure Migrate and Azure Database Migration Service.](images/common_scenarios.png "Common scenario))
+![Common scenarios include: Azure Migrate and Azure Database Migration Service.](images/common_scenarios.png "Common scenario")
 
 ## Step 2: Design a proof of concept solution
 
