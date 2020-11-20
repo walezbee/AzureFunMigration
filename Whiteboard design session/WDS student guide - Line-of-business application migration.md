@@ -9,7 +9,7 @@ Whiteboard design session student guide
 </div>
 
 <div class="MCWHeader3">
-October 2020
+November 2020
 </div>
 
 
@@ -109,7 +109,7 @@ To address this, James has proposed to the board that Fabrikam should migrate as
 
 ### Infographic for common scenarios
 
-![Common scenarios include: Azure Migrate and Azure Database Migration Service.](images/common_scenarios.png)
+![Common scenarios include: Azure Migrate and Azure Database Migration Service.](images/common_scenarios.png "Common scenario")
 
 ## Step 2: Design a proof of concept solution
 
