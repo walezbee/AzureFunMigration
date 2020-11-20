@@ -9,7 +9,7 @@ Whiteboard design session trainer guide
 </div>
 
 <div class="MCWHeader3">
-October 2020
+November 2020
 </div>
 
 
@@ -235,7 +235,7 @@ To address this, James has proposed to the board that Fabrikam should migrate as
 
 ### Infographic for common scenarios
 
-![Common scenarios include: Azure Migrate and Azure Database Migration Service.](images/common_scenarios.png)
+![Common scenarios include: Azure Migrate and Azure Database Migration Service.](images/common_scenarios.png "Common scenario))
 
 ## Step 2: Design a proof of concept solution
 
@@ -410,11 +410,11 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
     Azure Migrate is a fully-managed Azure service. Migration assessment occurs in two major phases: discovery and assessment. In the discovery phase, a collector appliance VM is deployed into the on-premises environment to gather raw data on the VMs to be migrated. This data includes static VM information (such as CPU, memory, disk configuration, OS and identification of key workloads such as databases) together with utilization metrics. These metrics are gathered over time, so it is important to gather data over a representative time period, especially for workloads with irregular usage patterns (for example, to generate daily, weekly or monthly reports).
     
-    ![Azure portal screenshot showing the Azure Migrate assessment report dashboard.](images/migration_assessment.png)
+    ![Azure portal screenshot showing the Azure Migrate assessment report dashboard.](images/migration_assessment.png "Azure Migrate assessment report dashboard")
 
     The collector appliance uploads the data it gathers to an Azure Migrate project in Azure.  Each appliance supports discovery of up to 10,000 VMs on VMware vCenter Server or 5,000 VMs on Hyper-V.
 
-    ![Azure portal screenshot showing the 'discover machines' blade of the Azure Migrate service.](images/discover_machines.png)
+    ![Azure portal screenshot showing the 'discover machines' blade of the Azure Migrate service.](images/discover_machines.png "Discover machines blade")
 
     In the second phase, assessment, the data from the discovery phase is used to produce a migration assessment report. Each assessment supports up to 35,000 VMs, which may be drawn from multiple collectors. You can create multiple reports from the same source data, and tailor the report using a range of migration parameters. These parameters include:
 
@@ -422,7 +422,7 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
     - Whether to size VMs based on the existing VMware configuration, or on the measured utilization. In the latter case, a 'comfort factor' allows you to control how much headroom is included in the sizing recommendation.
     - VM pricing tier, disk storage tier, Azure subscription offer, and discounts such as re-using existing Windows OS licenses with Azure Hybrid Benefit and reducing base compute costs with reserved instances.
 
-    ![Azure portal screenshot of the Azure Migrate assessment configuration options.](images/migration_assessment_configuration.png)
+    ![Azure portal screenshot of the Azure Migrate assessment configuration options.](images/migration_assessment_configuration.png "Azure Migrate assessment configuration options")
 
     Having configured the assessment, an assessment report is produced. This provides information on migration readiness, together with an estimate of both compute and storage costs.
 
@@ -444,13 +444,13 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
     Azure Migrate dependency visualization provides in-depth analysis of processes and network dependencies for each assessed VM. It is extremely useful for identifying non-obvious network dependencies, such as Kerberos, DNS, certificate revocation checks, and so on.
 
-    ![Azure portal screenshot showing the Azure Migrate dependency visualization.](images/dependency_visualization.png)
+    ![Azure portal screenshot showing the Azure Migrate dependency visualization.](images/dependency_visualization.png "Azure Migrate dependency visualization")
 
     Dependency visualization in Azure Migrate is based on the Service Map solution from Log Analytics, and can be used free of charge with Azure Migrate for up to 180 days (a dedicated Log Analytics workspace is required to avail of this discount). As part of Azure Migrate, dependency visualization is only available for VMware (and in Preview, Hyper-V) VMs. For physical machines, you can either use the Service Map solution from Log Analytics directly, or use the dependency analysis features of whichever third-party tool you have chosen for migration assessment.
 
     Deploying dependency visualization requires installing the Microsoft Monitoring Agent and Dependency Agent on each server being assessed. These are available for both Windows and Linux. Third-party tools will have different requirements, and may even support agentless dependency analysis.
 
-    ![Azure portal screenshot showing links and instructions to install the Microsoft Monitoring Agent and Dependency Agent.](images/agent_install.png)
+    ![Azure portal screenshot showing links and instructions to install the Microsoft Monitoring Agent and Dependency Agent.](images/agent_install.png "Microsoft Monitoring Agent and Dependency Agent instructions")
 
 3.  What criteria should Fabrikam use to prioritize their migrations when building a migration road map?
 
@@ -464,7 +464,7 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
     The business context of each migration also plays a factor in roadmap prioritization. For example, if the hardware used by an existing workload is close to end-of-life, an early migration may save on renewal costs. Likewise, a recent investment in an on-premises application may justify deferring the migration. Similarly, if the migration is intended to bring significant business benefits (for example, to provide a higher-availability deployment for a critical application), this can be grounds for prioritization.
 
-    ![Diagram showing Microsoft IT's cloud journey, and what proportion of applications was rehosted, refactored, retired, etc.](images/microsoft_it_journey_to_cloud.png)
+    ![Diagram showing Microsoft IT's cloud journey, and what proportion of applications was rehosted, refactored, retired, etc.](images/microsoft_it_journey_to_cloud.png "Microsoft IT journey")
 
 4.  What options can you suggest to migrate workloads whose current infrastructure is not suitable for a lift-and-shift migration to Azure? 
 
@@ -493,7 +493,7 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
     This is called an Azure **landing zone**. The [Microsoft Cloud Adoption Framework](https://docs.microsoft.com/azure/cloud-adoption-framework/) includes [detailed guidance on how to build your landing zone](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/landing-zone/). This includes the principles and design areas, as well as two implementation approaches - start small and expand, or start at enterprise scale.
 
-    Azure Blueprints includes out-of-the-box samples you can use to provision an initial landing zone, such as the [Azure Migration landing zone blueprint sameple](https://docs.microsoft.com/azure/governance/blueprints/samples/caf-migrate-landing-zone/). You can use this as-is, or as a starting point for your own landing zone blueprint.
+    Azure Blueprints includes out-of-the-box samples you can use to provision an initial landing zone, such as the [Azure Migration landing zone blueprint sample](https://docs.microsoft.com/azure/governance/blueprints/samples/caf-migrate-landing-zone/). You can use this as-is, or as a starting point for your own landing zone blueprint.
 
 2.  What tools are available for migration execution? Provide options for VMware VMs, physical servers, and databases.
    
@@ -526,7 +526,7 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 
     While Azure Migrate does not support assessment for physical servers, it does support migration, using the Azure Site Recovery migration engine. The approach and architecture are similar to that used for VMware VMs. Alternatively, a number of third-party migration tools is listed on the [Azure Migration hub](https://azure.microsoft.com/migration/) and integrated into Azure Migrate.
 
-    An alternative approach for migrating an on-premises VMware environment is to lift-and-shift into the [Azure VMware solution](https://azure.microsoft.com/services/azure-vmware/). This provides an Azure-hosted VMware environment. This approach offers speed of migration, application compatibility, and the ability to continue to use the tools and knowledge already embedded in the team. It does not offer all the advantages of a full cloud migration, but can still be very useful for difficult workloads or to meet aggresives schedules.
+    An alternative approach for migrating an on-premises VMware environment is to lift-and-shift into the [Azure VMware solution](https://azure.microsoft.com/services/azure-vmware/). This provides an Azure-hosted VMware environment. This approach offers speed of migration, application compatibility, and the ability to continue to use the tools and knowledge already embedded in the team. It does not offer all the advantages of a full cloud migration, but can still be very useful for difficult workloads or to meet aggresive schedules.
 
     For database migration, dedicated database migration tools should be preferred.
     
@@ -557,11 +557,11 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
    
     Azure Migrate will provide a cost estimate for each migrated workload as part of each migration assessment. This estimate factors in the assessment parameters, such as VM family and size, hours of operation, etc. Azure Migrate downloads the rate card for your subscription from the Azure billing APIs, so any eligible discounts are applied automatically. Be sure to deploy Azure Migrate to a subscription that qualifies for the same billing rates as your production subscriptions.
 
-    ![Azure portal screenshot of the Azure Migrate assessment configuration options](images/migration_assessment_configuration.png)
+    ![Azure portal screenshot of the Azure Migrate assessment configuration options](images/migration_assessment_configuration.png "Azure Migrate assessment configuration options")
 
     Simple cost estimates can also be obtained using the [Azure Pricing Calculator](https://azure.microsoft.com/en-us/pricing/calculator/). If you are logged into an account with access to an Azure subscription with discounted rates (for example, an EA subscription), the calculator includes the option to use the appropriate rate card.
 
-    ![Azure pricing calculator option to change subscription offer used for pricing calculation](images/pricing_calc_ea_option.png)
+    ![Azure pricing calculator option to change subscription offer used for pricing calculation](images/pricing_calc_ea_option.png "Azure pricing calculator")
 
     Third-party tools used for migration assessment of physical servers will also provide cost estimates for the migrated workload. For details such as use of discounted rates, check with the vendor.
 
