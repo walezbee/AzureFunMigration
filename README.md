@@ -7,7 +7,7 @@ Fabrikam Fabrics is a major manufacturer and distributor of clothing and soft fu
 
 The board has approved a plan to migrate as much existing infrastructure as possible to Azure, to eliminate IT infrastructure overheads and 'clean house'. Your team has been tasked with planning and executing this migration.
 
-June 2020
+November 2020
 
 ## Target audience
 
@@ -29,17 +29,13 @@ At the end of this workshop you will be better able to rationalize the migration
 
 In this whiteboard design session, you will look at how to design an Azure migration for a heterogenous customer environment. The existing infrastructure comprises both Windows and Linux servers running on both VMWare and physical machines, and includes some legacy servers. Throughout the whiteboard design session, you will look at the various options and services available to migrate heterogenous environments to Azure.
 
-At the end of this workshop, you will be better able to design and implement the discovery and assessment of environments to evaluate their readiness for migrating to Azure using services including Azure Migrate, Azure Database Migration Service, and Azure Site Recovery.
+At the end of this workshop, you will be better able to design and implement the discovery and assessment of environments to evaluate their readiness for migrating to Azure using services including Azure Migrate and Azure Database Migration Service.
 
 ## Hands-on lab
 
-In this lab, you will use Azure Migrate to perform an assessment of an on-premises environment with both Windows and Linux operating systems. You will learn how to perform discovery with Azure Migrate, how to group machines and customize assessments to understand dependencies of discovered workloads and how to determine cost.
+In this hands-on lab, you will learn how to assess and migrate a multi-tier application from Hyper-V to Azure. You will learn how to use Azure Migrate as the hub for executing a migration, together with accompanying tools.
 
-You will then learn how to migrate servers from an on-premises environment to Azure using Azure Site Recovery. This includes setting up the Azure environment, configuring replication, and performing a test failover.
-
-You will also learn to use the Database Migration Service and the Data Migration Assistant to perform assessments of databases and migrate database schemas and content to Azure.
-
-At the end of this lab, you will be better able to execute migrations to Azure.
+After this hands-on lab, you will know the role of Azure Migrate and related migration tools and how to use them to successfully migrate an on-premises multi-tier application to Azure.
 
 ## Azure services and related products
 
