@@ -262,9 +262,9 @@ In this task, you will configure the Azure Migrate appliance and use it to compl
 
 10. After you select **Login**, a new window will open asking for a code.  This code is located below the **Azure Migrate project key**.  Copy and paste this code in the login field.  You will then be asked for your Azure portal credentials to complete the login process.
 
-    ![Screenshot of the Azure Migrate appliance configuration wizard, showing the registration with the login code for the Azure Migrate project.](images/Exercise1/reg1a.png)
+    ![Screenshot of the Azure Migrate appliance configuration wizard, showing the registration with the login code for the Azure Migrate project.](images/Exercise1/reg1a.png "Azure Migrate login code")
 
-    ![Screenshot of the Azure Migrate appliance login window, showing where to copy and paste the login code for the Azure Migrate project.](images/Exercise1/reg1b.png)
+    ![Screenshot of the Azure Migrate appliance login window, showing where to copy and paste the login code for the Azure Migrate project.](images/Exercise1/reg1b.png "Azure Migrate Microsoft login")
 
 11. Select **Login**. This will open an Azure login prompt in a new browser tab (if it doesn't appear, make sure the pop-up blocker in the browser is disabled). Log in using your Azure credentials. Once you have logged in, return to the Azure Migrate Appliance tab and the appliance registration will start automatically.
 
