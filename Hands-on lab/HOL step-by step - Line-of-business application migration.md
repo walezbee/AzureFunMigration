@@ -134,7 +134,7 @@ In this task, you will create the Azure Migrate project and select the assessmen
 
 2. Select **All services** in the portal's left navigation, then search for and select **Azure Migrate** to open the Azure Migrate Overview blade, shown below.
 
-    ![Screenshot of the Azure Migrate overview blade.](images/Exercise1/azure-migrate-overview.png "Azure Migrate Overview blade")
+    ![Screenshot of the Azure Migrate overview blade.](images/Exercise1/SP-Ex1t1s4.png "Azure Migrate Overview blade")
 
 3. Select **Assess and migrate servers**, then **Create project**.  Select your subscription and create a new resource group named **AzureMigrateRG**. Enter **SmartHotelMigration** as the Migrate project name, and choose a geography close to you to store the migration assessment data. Then select **Create**.
 
@@ -143,9 +143,9 @@ In this task, you will create the Azure Migrate project and select the assessmen
 
     ![Screenshot of the Azure Migrate 'Create project' blade, showing the Azure Migrate project name, resource group and geography.](images/Exercise1/create-project.png "Azure Migrate - Create project")
 
-6. The Azure Migrate deployment will start. Once it has completed, you should see the **Azure Migrate: Server Assessment** and **Azure Migrate: Server Migration** panels for the current migration project, as shown below.
+6. The Azure Migrate deployment will start. Once it has completed, you should see the **Azure Migrate: Discovery and assessment** and **Azure Migrate: Server Migration** panels for the current migration project, as shown below.
 
-    ![Screenshot of the Azure Migrate 'Create project' blade, showing the Server Assessment and Server Migration panels.](images/Exercise1/servers.png "Azure Migrate - Servers view")
+    ![Screenshot of the Azure Migrate 'Create project' blade, showing the Server Assessment and Server Migration panels.](images/Exercise1/SP-Ex1t1s6.png "Azure Migrate - Servers view")
 
 #### Task summary <!-- omit in toc -->
 
