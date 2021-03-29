@@ -346,7 +346,7 @@ In this task, you will use Azure Migrate to create a migration assessment for th
 
 6. Select **Next**, followed by **Create assessment**. On the **Azure Migrate - Windows, Linux and SQL Server** blade, select **Refresh** periodically until the number of assessments shown is **1**. This may take several minutes.
 
-    ![Screenshot from Azure Migrate showing the number of assessments as '1'.](images/Exercise1/ssessments-refresh-v2.png "Azure Migrate - Assessments (count)")
+    ![Screenshot from Azure Migrate showing the number of assessments as '1'.](images/Exercise1/assessments-refresh-v2.png "Azure Migrate - Assessments (count)")
 
 7. Select **Assessments** under **Azure Migrate: Discovery and assessment** to see a list of assessments. Then select the actual assessment.
 
