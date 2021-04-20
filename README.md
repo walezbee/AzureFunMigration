@@ -21,4 +21,26 @@ After this hands-on lab, you will know the role of Azure Migrate and related mig
 
 ## Agenda:
 
-
+| Day 1                                                       | Duration   | Time (Eastern) |
+| ----------------------------------------------------------- | ---------- | -------------- |
+| Welcome / Introduction                                      | 15 minutes |                |
+| Lab Setup Part 1                                            | 15 minutes |                |
+| Solution, Tools & Architecture Overview                     | 60 minutes |                |
+| Break                                                       | 15 minutes |                |
+| Lab Setup Part 2                                            | 15 minutes |                |
+| Exercise 1: Discover and assess the on-premises environment | 60 minutes |                |
+| Break                                                       | 15 minutes |                |
+| Review Azure Migrate Output                                 | 20 minutes |                |
+| Azure Cost Estimations - The Basics                         | 20 minutes |                |
+| Wrap Up                                                     | 15 minutes |                |
+| **Day 2**                                                   |            |                |
+| Welcome Back / Review                                       | 15 minutes |                |
+| Exercise 2: Migrate the Application Database                | 60 minutes |                |
+| Break                                                       | 15 minutes |                |
+| SQL Server vs Azure SQL - The differences                   | 20 minutes |                |
+| Azure Connectivity - An Overview                            | 20 minutes |                |
+| Exercise 3: Migrate the application and web tiers           | 60 minutes |                |
+| Break                                                       | 15 minutes |                |
+| Azure OMS - What is it?                                     | 20 minutes |                |
+| Clean Up                                                    | 10 minutes |                |
+| Wrap Up                                                     | 15 minutes |                |
