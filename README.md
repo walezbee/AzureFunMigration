@@ -24,10 +24,10 @@ After this hands-on lab, you will know the role of Azure Migrate and related mig
 | Day 1                                                       | Duration   | Time (Eastern) |
 | ----------------------------------------------------------- | ---------- | -------------- |
 | Welcome / Introduction                                      | 15 minutes |                |
-| Lab Setup Part 1                                            | 15 minutes |                |
+| [Lab Setup Part 1](/Hands-on%20lab/Setup.md#task-1-deploy-the-on-premises-environment)                | 15 minutes |                |
 | Solution, Tools & Architecture Overview                     | 60 minutes |                |
 | Break                                                       | 15 minutes |                |
-| Lab Setup Part 2                                            | 15 minutes |                |
+| [Lab Setup Part 2](/Hands-on%20lab/Setup.md#task-2-verify-the-on-premises-environment)                | 15 minutes |                |
 | Exercise 1: Discover and assess the on-premises environment | 60 minutes |                |
 | Break                                                       | 15 minutes |                |
 | Review Azure Migrate Output                                 | 20 minutes |                |
