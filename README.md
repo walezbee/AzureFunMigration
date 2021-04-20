@@ -41,6 +41,6 @@ After this hands-on lab, you will know the role of Azure Migrate and related mig
 | [Azure Connectivity - An Overview](https://docs.microsoft.com/en-us/azure/networking/fundamentals/networking-overview) | 20 minutes |                |
 | [Exercise 3: Migrate the application and web tiers](/Hands-on%20lab/Migration.md#exercise-3-migrate-the-application-and-web-tiers-using-azure-migrate-server-migration) | 60 minutes |                |
 | Break                                                        | 15 minutes |                |
-| ?? Azure Monitor ??                                          | 20 minutes |                |
+| ?? Cloud Adoption Framework ??                                     | 20 minutes |                |
 | [Clean Up](/Hands-on%20lab/Migration.md#after-the-hands-on-lab) | 10 minutes |                |
 | Wrap Up                                                      | 15 minutes |                |
