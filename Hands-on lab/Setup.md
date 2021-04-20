@@ -2,7 +2,7 @@
 
 <!-- TOC -->
 
-- [Line-of-business application migration before the hands-on lab setup guide](#line-of-business-application-migration-before-the-hands-on-lab-setup-guide)
+- [Tech Intensity Migration setup guide](#tech-intensity-migration-setup-guide)
   - [Requirements](#requirements)
   - [Before the hands-on lab](#before-the-hands-on-lab)
     - [Task 1: Deploy the on-premises environment](#task-1-deploy-the-on-premises-environment)
@@ -10,7 +10,7 @@
 
 <!-- /TOC -->
 
-# Line-of-business application migration before the hands-on lab setup guide 
+# Tech Intensity Migration setup guide 
 
 ## Requirements
 
