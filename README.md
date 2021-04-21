@@ -1,5 +1,5 @@
-# Azure Fundementals Workshop
-Azure Fundementals Tech Intensity Workshop
+# Infrastrucutre Migration Workshop
+Azure Infrastructure Migration Tech Intensity Workshop
 
 ## Hands-on lab
 
