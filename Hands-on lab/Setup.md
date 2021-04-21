@@ -44,7 +44,7 @@
 
 ## Before the hands-on lab
 
-Duration: 60 minutes
+Duration: 15 minutes
 
 ### Task 1: Deploy the on-premises environment
 
