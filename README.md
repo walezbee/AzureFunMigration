@@ -1,4 +1,4 @@
-# Infrastrucutre Migration Workshop
+# Infrastructure Migration Workshop
 Azure Infrastructure Migration Tech Intensity Workshop
 
 ## Hands-on lab
