@@ -425,16 +425,16 @@ You will now deploy the Linux versions of the Microsoft Monitoring Agent and Dep
 
     This gives the terminal session elevated privileges.
 
-16. Enter the following command, substituting \<Workspace ID\> and \<Workspace Key\> with the values copied previously. Answer **<Yes>** when prompted to restart services during package upgrades without asking. 
+16. Enter the following command, substituting \<Workspace ID\> and \<Workspace Key\> with the values copied previously. Answer **<Yes>** when prompted to restart services during package upgrades without asking  **NOTE: You must encapsulate the Workspace Key and ID with quotation marks.** 
 
     ```s
-    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <Workspace ID> -s <Workspace Key>
+    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w "Workspace ID" -s "Workspace Key"
     ```
 
-17. Enter the following command, substituting \<Workspace ID\> with the value copied earlier:
+17. Enter the following command, substituting "Workspace ID" with the value copied earlier: **NOTE: You must encapsulate the Workspace Key and ID with quotation marks.** 
 
     ```s
-    /opt/microsoft/omsagent/bin/service_control restart <Workspace ID>
+    /opt/microsoft/omsagent/bin/service_control restart "Workspace ID"
     ```
 
 18. Enter the following command. This downloads a script that will install the Dependency Agent.
