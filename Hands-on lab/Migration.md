@@ -425,7 +425,7 @@ You will now deploy the Linux versions of the Microsoft Monitoring Agent and Dep
 
     This gives the terminal session elevated privileges.
 
-16. Enter the following command, substituting \<Workspace ID\> and \<Workspace Key\> with the values copied previously. Answer **<Yes>** when prompted to restart services during package upgrades without asking  **NOTE: You must encapsulate the Workspace Key and ID with quotation marks.** 
+16. Enter the following command, substituting "Workspace ID" and "Workspace Key" with the values copied previously. Answer **<Yes>** when prompted to restart services during package upgrades without asking  **NOTE: You must encapsulate the Workspace Key and ID with quotation marks.** 
 
     ```s
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w "Workspace ID" -s "Workspace Key"
