@@ -35,7 +35,7 @@
         "dmsSubnetName": "DMS",
         "customScriptFolder": "./sept-2020/",
         "customScriptUriScriptFileName": "BootstrapSmartHotelHost.ps1",
-        "customScriptUri": "https://cloudworkshop.blob.core.windows.net/line-of-business-application-migration/sept-2020/BootstrapSmartHotelHost.ps1"
+        "customScriptUri": "https://tekworkshopstrg.blob.core.windows.net/line-of-business-application-migration/sept-2020/BootstrapSmartHotelHost.ps1"
     },
     "resources": [
         {
